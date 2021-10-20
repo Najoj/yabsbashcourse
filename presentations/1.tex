@@ -1,9 +1,17 @@
 \documentclass{beamer}
 \usetheme{metropolis}
+
+% Aliasing
+\let\tt\texttt
+\let\bf\textbf
+\let\it\itshape
+\let\ul\underline
+
 \title{Using the terminal}
 \date{26 October 2021}
 \author{Johan Öhlin}
 \institute{Yabs}
+
 \begin{document}
   % Page 1 (title) %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \maketitle
@@ -35,5 +43,27 @@
           Replacement of Bourne Shell (Bell, 1979)                          \\
           De-facto standard on GNU+Linux                                    \\
   \end{frame}
-\end{document}
+  
+  % Page 6 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \begin{frame}{Basics}
+          \begin{tabular}{l l l}
+                  \hline
+                  \tt{cd}           &
+                  Change directory  &
+                  \tt{cd .././dir}  \\
+                  \hline
+                  \tt{rm}           &
+                  Remove &
+                  \tt{rm secrets.gz}  \\
+                  \hline
+                  \tt{mkdir}           &
+                  Create directory &
+                  \tt{mkdir newdir}  \\
+                  \hline
+                  \tt{rmdir}           &
+                  Remove \ul{empty} directory &
+                  \tt{rmdir olddir}  \\
+                  \hline
+          \end{tabular}
+  \end{frame}
 \end{document}
