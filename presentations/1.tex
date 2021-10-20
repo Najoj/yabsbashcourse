@@ -7,63 +7,85 @@
 \let\it\itshape
 \let\ul\underline
 
-\title{Using the terminal}
+\title{Using the shell}
 \date{26 October 2021}
 \author{Johan Öhlin}
 \institute{Yabs}
 
 \begin{document}
-  % Page 1 (title) %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \maketitle
+% Page 1 (title) %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\maketitle
 
-  % Page 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \begin{frame}{Me}
-          Johan Öhlin           \\
-          At Yabs since 2017    \\
-          Primarily running GNU+Linux since 2008    \\
-  \end{frame}
-  % Page 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \begin{frame}{The terminal}
-          Started as a keyboard driven user interfeace to the operating system's
-          kernel                                                            \\
-          Grown to not primarily not communicate directly with the kernel   \\
-          More `advanced' scripts to automate                               \\
-  \end{frame}
+% Page 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Me}
+        Johan Öhlin           \\
+        At Yabs since 2017    \\
+        Primarily running GNU+Linux since 2008    \\
+\end{frame}
+% Page 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{The terminal}
+        Started as a keyboard driven user interfeace to the operating system's
+        kernel                                                            \\
+        Grown to not primarily not communicate directly with the kernel   \\
+        More `advanced' scripts to automate chores                        \\
+\end{frame}
 
-  % Page 4 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \begin{frame}{Shell vs. terminal}
-          Pretty much used interchangeably                                  \\
-          Terminal (emulator) controls few things and executes shell        \\
-          Shell interprets `commands' and their interfaces                  \\
-  \end{frame}
-  
-  % Page 5 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \begin{frame}{Bash}
-          Bourne-Again Shell (GNU, 1989)                                    \\
-          Replacement of Bourne Shell (Bell, 1979)                          \\
-          De-facto standard on GNU+Linux                                    \\
-  \end{frame}
-  
-  % Page 6 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \begin{frame}{Basics}
-          \begin{tabular}{l l l}
-                  \hline
-                  \tt{cd}           &
-                  Change directory  &
-                  \tt{cd .././dir}  \\
-                  \hline
-                  \tt{rm}           &
-                  Remove &
-                  \tt{rm secrets.gz}  \\
-                  \hline
-                  \tt{mkdir}           &
-                  Create directory &
-                  \tt{mkdir newdir}  \\
-                  \hline
-                  \tt{rmdir}           &
-                  Remove \ul{empty} directory &
-                  \tt{rmdir olddir}  \\
-                  \hline
-          \end{tabular}
-  \end{frame}
+% Page 4 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{``Shell'' vs. ``terminal''}
+        Pretty much used interchangeably                                  \\
+        Terminal (emulator) controls few things and executes shell        \\
+        Shell interprets `commands' and their interfaces                  \\
+\end{frame}
+
+% Page 5 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Bash}
+        Bourne-Again Shell (GNU, 1989)                                    \\
+        Replacement of Bourne Shell (Bell, 1979)                          \\
+        De-facto standard on GNU+Linux systems                            \\
+        Available on Mac and Windows                                      \\
+\end{frame}
+
+% Page 6 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Basics}
+        \begin{tabular}{l l l}
+                \hline
+                \tt{cd}           &
+                Change directory  &
+                \tt{cd .././dir}  \\
+                \hline
+                \tt{rm}           &
+                Remove &
+                \tt{rm secrets.gz}  \\
+                \hline
+                \tt{mkdir}           &
+                Create directory &
+                \tt{mkdir newdir}  \\
+                \hline
+                \tt{rmdir}           &
+                Remove \ul{empty} directory &
+                \tt{rmdir olddir}  \\
+                \hline
+                \tt{touch}               &
+                Change file timestamps   &
+                \tt{rmdir olddir}        \\
+                \hline
+                \tt{mv}                 &
+                Move a file             &
+                \tt{mv olddir newdir}   \\
+                \hline
+        \end{tabular}
+\end{frame}
+% Page 7 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Basics - Example}
+        \tt{\$ mkdir "bash course"}         \\
+        \tt{\$ mkdir "bash course/day 1"}   \\
+        \tt{\$ cd "bash course/day 1"}      \\
+        \tt{\$ cd ..}                       \\
+        \tt{\$ rmdir "day 1"}               \\
+        \tt{\$ touch "file 1" "file 2"}     \\
+        \tt{\$ mv "file 2" "file 1"}        \\
+        \tt{\$ rm "file 1"}                 \\
+        \tt{\$ mv "file 1" "../file"}       \\
+        \tt{\$ rm "../file"}                \\
+\end{frame}
 \end{document}
