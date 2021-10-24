@@ -1,5 +1,6 @@
 \documentclass{beamer}
 
+\usepackage[utf8]{inputenc}
 \usepackage{hyperref}
 \usetheme{metropolis}
 
@@ -63,14 +64,14 @@
         All directories has previous directory in it, called \tt{..}   \\
         Your home directory is called \tt{~}                           \\
         Everything starts at the root directory, called \tt{/}         \\
-        ``Everything is a file''.
+        ``Everything is a file''. Eg. \tt{/dev/cdrom0}, \tt{/dev/hda0}, etc.
 \end{frame}
 
 % Page 8 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Basics}
         \tt{\$ command [options and arguments]}  \\
         %\begin{tabular}{l l l}
-        \begin{tabular}{p{0.1\textwidth} p{0.4\textwidth} p{0.2\textwidth}}
+        \begin{tabular}{p{0.1\textwidth} p{0.3\textwidth} p{0.3\textwidth}}
                 \hline
                 \tt{cd}           &
                 Change directory  &
@@ -167,7 +168,7 @@
 % Page 12 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Finding programs}
         %\begin{tabular}{l l l}
-        \begin{tabular}{p{0.1\textwidth} p{0.4\textwidth} p{0.2\textwidth}}
+        \begin{tabular}{p{0.2\textwidth} p{0.4\textwidth} p{0.2\textwidth}}
                 \hline
                 \tt{command -v}             &
                 Finding location of program to run (from \$PATH) &
@@ -183,7 +184,7 @@
 % Page 13 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Core utils}
         A handful of GNU core utils 8,27. \\
-        %\begin{tabular}{l l l}
+        IEEE Std 1003.1-2008 utilities \\
         \begin{tabular}{p{0.1\textwidth} p{0.4\textwidth} p{0.3\textwidth}}
                 \hline
                 \tt{date}             &
@@ -210,6 +211,17 @@
                 Does nothing, but exits unsuccessfully &
                 \tt{\$ false}       \\
                 \hline
+        \end{tabular}
+\end{frame}
+
+% Page 14 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Core utils}
+        \begin{tabular}{p{0.1\textwidth} p{0.4\textwidth} p{0.3\textwidth}}
+                \hline
+                \tt{mktemp}             &
+                Creates a temporary file or directory &
+                \tt{\$ mktemp }       \\
+                \hline
                 \tt{nl}             &
                 Numbers lines of files &
                 \tt{\$ nl file}       \\
@@ -218,10 +230,100 @@
                 Formats and prints data  &
                 \tt{\$ printf "0x\%x" 20}       \\
                 \hline
-                \tt{mktemp}             &
-                Creates a temporary file or directory &
-                \tt{\$ mktemp }       \\
+                \tt{pwd}             &
+                Prints the current working directory &
+                \tt{\$ pwd}       \\
+                \hline
+                \tt{seq}             &
+                Prints a sequence of numbers  &
+                \tt{\$ seq 1 7 32}       \\
+                \hline
+                \tt{shuf}             &
+                Generate random permutations &
+                \tt{\$ shuf -u fil}       \\
+                \hline
+                \tt{sleep}             &
+                Delays for a specified amount of time &
+                \tt{\$ sleep 30 1m}       \\
                 \hline
         \end{tabular}
+\end{frame}
+% Page 15 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Core utils}
+        \begin{tabular}{p{0.1\textwidth} p{0.4\textwidth} p{0.3\textwidth}}
+                \hline
+                \tt{sort}             &
+                Sort lines of text files  &
+                \tt{\$ sort -u file}       \\
+                \hline
+                \tt{stat}             &
+                Returns data about an inode &
+                \tt{\$ stat file}       \\
+                \hline
+                \tt{tac}             &
+                Concatenates and prints files in reverse order line by line &
+                \tt{\$ tac file}       \\
+                \hline
+                \tt{tee}             &
+                Sends output to multiple files &
+                \tt{\$ tee file}       \\
+                \hline
+                \tt{tr}             &
+                Translates or deletes characters &
+                \tt{\$ tr "{\textbackslash}n}" "{\textbackslash}t"       \\
+                \hline
+                \tt{true}             &
+                Does nothing, but exits successfully &
+                \tt{\$ true}       \\
+                \hline
+        \end{tabular}
+\end{frame}
+
+% Page 16 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Core utils}
+        \begin{tabular}{p{0.1\textwidth} p{0.4\textwidth} p{0.3\textwidth}}
+                \hline
+                \tt{wc}             &
+                Prints the number of bytes, words, and lines in files &
+                \tt{\$ wc -l file}       \\
+                \hline
+                \tt{yes}             &
+                Prints a string repeatedly &
+                \tt{\$ yes no}       \\
+                \hline
+        \end{tabular}
+\end{frame}
+
+% Page 17 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Piping}
+        Communication between programs.     \\
+        \tt{\$ ls | wc -l | sort -u}        \\
+
+        Writing to file.    \\
+        \tt{\$ ls > file}   \\
+        \tt{\$ > file ls}   \\
+
+        Reading from file.    \\
+        \tt{\$ wc < file}   \\
+        \tt{\$ < file wc}
+        
+        Appending to file.    \\
+        \tt{\$ echo hello >> file}   \\
+        \tt{\$ >> file echo hello }
+\end{frame}
+
+% Page 18 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Piping}
+        Combining execution.     \\
+        \tt{\$ ls; echo "hello"}        \\
+
+        First have to succeed.    \\
+        \tt{\$ ls \&\& echo "hello"}        \\
+
+        Execute second if first fails.    \\
+        \tt{\$ ls || echo "hello"}        \\
+
+        Combine them.    \\
+        \tt{\$ (ls || echo "hello") \&\& pwd}        \\
 \end{frame}
 \end{document}
