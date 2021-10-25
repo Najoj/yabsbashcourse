@@ -70,8 +70,7 @@
 % Page 8 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Basics}
         \tt{\$ command [options and arguments]}  \\
-        %\begin{tabular}{l l l}
-        \begin{tabular}{p{0.1\textwidth} p{0.3\textwidth} p{0.3\textwidth}}
+        \begin{tabular}{p{0.1\textwidth} p{0.4\textwidth} | p{0.4\textwidth}}
                 \hline
                 \tt{cd}           &
                 Change directory  &
@@ -117,8 +116,7 @@
 
 % Page 10 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{How to}
-        %\begin{tabular}{l l l}
-        \begin{tabular}{p{0.1\textwidth} p{0.5\textwidth} p{0.3\textwidth}}
+        \begin{tabular}{p{0.1\textwidth} p{0.4\textwidth} | p{0.4\textwidth}}
                 \hline
                 \tt{man}                    &
                 Briefer \bf{man}ual page    &
@@ -143,8 +141,7 @@
 
 % Page 11 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{File content}
-        %\begin{tabular}{l l p{0.5 \textwidth}}
-        \begin{tabular}{p{0.1\textwidth} p{0.4\textwidth} p{0.2\textwidth}}
+        \begin{tabular}{p{0.1\textwidth} p{0.4\textwidth} | p{0.4\textwidth}}
                 \hline
                 \tt{cat}             &
                 Concatenates and prints files on the standard output &
@@ -166,9 +163,16 @@
 \end{frame}
 
 % Page 12 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{File content - Example}
+        \tt{\$ cat "file"}         \\
+        \tt{\$ head -n 2 /dev/urandom}   \\
+        \tt{\$ tail -n 2 "some file"}        \\
+        \tt{\$ less /some/file}                 \\
+\end{frame}
+
+% Page 13 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Finding programs}
-        %\begin{tabular}{l l l}
-        \begin{tabular}{p{0.2\textwidth} p{0.4\textwidth} p{0.2\textwidth}}
+        \begin{tabular}{p{0.1\textwidth} p{0.4\textwidth} | p{0.4\textwidth}}
                 \hline
                 \tt{command -v}             &
                 Finding location of program to run (from \$PATH) &
@@ -181,11 +185,30 @@
         \end{tabular}
 \end{frame}
 
-% Page 13 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Page 14 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Piping}
+        Communication between programs.     \\
+        \tt{\$ ls | wc -l | sort -u}        \\
+
+        Writing to file.    \\
+        \tt{\$ ls > file}   \\
+        \tt{\$ > file ls}   \\
+
+        Reading from file.    \\
+        \tt{\$ wc < file}   \\
+        \tt{\$ < file wc}
+        
+        Appending to file.    \\
+        \tt{\$ echo hello >> file}   \\
+        \tt{\$ >> file echo hello }
+\end{frame}
+
+
+% Page 15 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Core utils}
         A handful of GNU core utils 8,27. \\
         IEEE Std 1003.1-2008 utilities \\
-        \begin{tabular}{p{0.1\textwidth} p{0.4\textwidth} p{0.3\textwidth}}
+        \begin{tabular}{p{0.1\textwidth} p{0.4\textwidth} | p{0.4\textwidth}}
                 \hline
                 \tt{date}             &
                 Prints or sets the system date and time &
@@ -214,9 +237,24 @@
         \end{tabular}
 \end{frame}
 
-% Page 14 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Page 16 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Piping}
+        Combining execution.     \\
+        \tt{\$ ls; echo "hello"}        \\
+
+        First have to succeed.    \\
+        \tt{\$ ls \&\& echo "hello"}        \\
+
+        Execute second if first fails.    \\
+        \tt{\$ ls || echo "hello"}        \\
+
+        Combine them.    \\
+        \tt{\$ (ls || echo "hello") \&\& pwd}        \\
+\end{frame}
+
+% Page 17 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Core utils}
-        \begin{tabular}{p{0.1\textwidth} p{0.4\textwidth} p{0.3\textwidth}}
+        \begin{tabular}{p{0.1\textwidth} p{0.4\textwidth} | p{0.4\textwidth}}
                 \hline
                 \tt{mktemp}             &
                 Creates a temporary file or directory &
@@ -248,9 +286,10 @@
                 \hline
         \end{tabular}
 \end{frame}
-% Page 15 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Page 18 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Core utils}
-        \begin{tabular}{p{0.1\textwidth} p{0.4\textwidth} p{0.3\textwidth}}
+        \begin{tabular}{p{0.1\textwidth} p{0.4\textwidth} | p{0.4\textwidth}}
                 \hline
                 \tt{sort}             &
                 Sort lines of text files  &
@@ -279,9 +318,9 @@
         \end{tabular}
 \end{frame}
 
-% Page 16 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Page 19 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Core utils}
-        \begin{tabular}{p{0.1\textwidth} p{0.4\textwidth} p{0.3\textwidth}}
+        \begin{tabular}{p{0.1\textwidth} p{0.4\textwidth} | p{0.4\textwidth}}
                 \hline
                 \tt{wc}             &
                 Prints the number of bytes, words, and lines in files &
@@ -294,36 +333,4 @@
         \end{tabular}
 \end{frame}
 
-% Page 17 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Piping}
-        Communication between programs.     \\
-        \tt{\$ ls | wc -l | sort -u}        \\
-
-        Writing to file.    \\
-        \tt{\$ ls > file}   \\
-        \tt{\$ > file ls}   \\
-
-        Reading from file.    \\
-        \tt{\$ wc < file}   \\
-        \tt{\$ < file wc}
-        
-        Appending to file.    \\
-        \tt{\$ echo hello >> file}   \\
-        \tt{\$ >> file echo hello }
-\end{frame}
-
-% Page 18 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Piping}
-        Combining execution.     \\
-        \tt{\$ ls; echo "hello"}        \\
-
-        First have to succeed.    \\
-        \tt{\$ ls \&\& echo "hello"}        \\
-
-        Execute second if first fails.    \\
-        \tt{\$ ls || echo "hello"}        \\
-
-        Combine them.    \\
-        \tt{\$ (ls || echo "hello") \&\& pwd}        \\
-\end{frame}
 \end{document}
