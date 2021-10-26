@@ -9,6 +9,8 @@
 \let\bf\textbf
 \let\it\itshape
 \let\ul\underline
+\let\tilde\texttildelow
+
 
 \title{Using the shell}
 \date{26 October 2021}
@@ -62,7 +64,7 @@
 \begin{frame}{File system}
         All directories has itself in it, called \tt{.}                \\
         All directories has previous directory in it, called \tt{..}   \\
-        Your home directory is called \tt{~}                           \\
+        Your home directory is called \tilde                           \\
         Everything starts at the root directory, called \tt{/}         \\
         ``Everything is a file''. Eg. \tt{/dev/cdrom0}, \tt{/dev/hda0}, etc.
 \end{frame}
@@ -78,7 +80,7 @@
                 \hline
                 \tt{rm}           &
                 Remove &
-                \tt{\$ rm "\$\{HOME\}/secrets.gz"}  \\
+                \tt{\$ rm secrets.gz}  \\
                 \hline
                 \tt{mkdir}           &
                 Create directory &
@@ -95,6 +97,10 @@
                 \tt{mv}                     &
                 Move a file (also rename)   &
                 \tt{\$ mv olddir/file newdir}  \\
+                \hline
+                \tt{ls}                     &
+                List files in directory   &
+                \tt{\$ ls \tilde}                \\
                 \hline
         \end{tabular} \\
         Note that \tt{cd} is a built-in command and not an external program.
