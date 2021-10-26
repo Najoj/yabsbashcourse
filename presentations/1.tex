@@ -209,8 +209,22 @@
         \tt{\$ >> file echo hello }
 \end{frame}
 
-
 % Page 15 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Piping}
+        Combining execution.     \\
+        \tt{\$ ls; echo "hello"}        \\
+
+        First have to succeed.    \\
+        \tt{\$ ls \&\& echo "hello"}        \\
+
+        Execute second if first fails.    \\
+        \tt{\$ ls || echo "hello"}        \\
+
+        Combine them.    \\
+        \tt{\$ (ls || echo "hello") \&\& pwd}        \\
+\end{frame}
+
+% Page 16 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Core utils}
         A handful of GNU core utils 8,27. \\
         IEEE Std 1003.1-2008 utilities \\
@@ -241,21 +255,6 @@
                 \tt{\$ false}       \\
                 \hline
         \end{tabular}
-\end{frame}
-
-% Page 16 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Piping}
-        Combining execution.     \\
-        \tt{\$ ls; echo "hello"}        \\
-
-        First have to succeed.    \\
-        \tt{\$ ls \&\& echo "hello"}        \\
-
-        Execute second if first fails.    \\
-        \tt{\$ ls || echo "hello"}        \\
-
-        Combine them.    \\
-        \tt{\$ (ls || echo "hello") \&\& pwd}        \\
 \end{frame}
 
 % Page 17 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
