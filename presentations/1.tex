@@ -1,0 +1,342 @@
+\documentclass{beamer}
+
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+\usetheme{metropolis}
+
+% Aliasing
+\let\tt\texttt
+\let\bf\textbf
+\let\it\itshape
+\let\ul\underline
+\let\tilde\texttildelow
+
+
+\title{Using the shell}
+\date{26 October 2021}
+\author{Johan Öhlin}
+\institute{Yabs}
+
+\begin{document}
+% Page 1 (title) %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\maketitle
+
+% Page 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Me}
+        Johan Öhlin           \\
+        At Yabs since 2017    \\
+        Primarily running GNU+Linux since 2008    \\
+\end{frame}
+% Page 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{The terminal}
+        Started as a keyboard driven user interfeace to the operating system's
+        kernel                                                            \\
+        Grown to not primarily not communicate directly with the kernel   \\
+        More `advanced' scripts to automate chores                        \\
+\end{frame}
+
+% Page 4 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{``Shell'' vs. ``terminal''}
+        Pretty much used interchangeably                                  \\
+        Terminal (emulator) controls few things and executes shell        \\
+        Shell interprets `commands' and their interfaces                  \\
+\end{frame}
+
+% Page 5 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Bash}
+        Bourne-Again Shell (GNU, 1989)                                    \\
+        Replacement of Bourne Shell (Bell, 1979)                          \\
+        De-facto standard on GNU+Linux systems                            \\
+        Available on Mac and Windows                                      \\
+\end{frame}
+
+% Page 6 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Alteratives}
+        \begin{tabular}{p{0.1\textwidth} p{0.4\textwidth} p{0.2\textwidth}}
+                \tt{csh}        & C shell   & 1978--  \\
+                \tt{fish}       & Friendly interactive shell &  2005-- \\
+                \tt{ksh}        & Korn shell & 1983--2012 \\
+                \tt{zsh}        & Z shell & 1990--  \\
+        \end{tabular}
+\end{frame}
+
+% Page 7 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{File system}
+        All directories has itself in it, called \tt{.}                \\
+        All directories has previous directory in it, called \tt{..}   \\
+        Your home directory is called \tilde                           \\
+        Everything starts at the root directory, called \tt{/}         \\
+        ``Everything is a file''. Eg. \tt{/dev/cdrom0}, \tt{/dev/hda0}, etc.
+\end{frame}
+
+% Page 8 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Basics}
+        \tt{\$ command [options and arguments]}  \\
+        \begin{tabular}{p{0.1\textwidth} p{0.4\textwidth} | p{0.4\textwidth}}
+                \hline
+                \tt{cd}           &
+                Change directory  &
+                \tt{\$ cd .././dir}  \\
+                \hline
+                \tt{rm}           &
+                Remove &
+                \tt{\$ rm secrets.gz}  \\
+                \hline
+                \tt{mkdir}           &
+                Create directory &
+                \tt{\$ mkdir newdir}  \\
+                \hline
+                \tt{rmdir}           &
+                Remove \ul{empty} directory &
+                \tt{\$ rmdir olddir}  \\
+                \hline
+                \tt{touch}               &
+                Change file timestamps   &
+                \tt{\$ touch newfile}       \\
+                \hline
+                \tt{mv}                     &
+                Move a file (also rename)   &
+                \tt{\$ mv olddir/file newdir}  \\
+                \hline
+                \tt{ls}                     &
+                List files in directory   &
+                \tt{\$ ls \tilde}                \\
+                \hline
+        \end{tabular} \\
+        Note that \tt{cd} is a built-in command and not an external program.
+\end{frame}
+
+% Page 9 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Basics - Example}
+        \tt{\$ mkdir "bash course"}         \\
+        \tt{\$ mkdir "bash course/day 1"}   \\
+        \tt{\$ cd "bash course/day 1"}      \\
+        \tt{\$ cd ..}                       \\
+        \tt{\$ rmdir "day 1"}               \\
+        \tt{\$ touch "file 1" "file 2"}     \\
+        \tt{\$ mv "file 2" "file 1"}        \\
+        \tt{\$ rm "file 1"}                 \\
+        \tt{\$ mv "file 1" "../file"}       \\
+        \tt{\$ rm "../file"}                \\
+\end{frame}
+
+% Page 10 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{How to}
+        A lot of programs make use of \tt{--help} option. You can usually figure out how a program works by using it. (It can often be shortened to \tt{-h}.)
+        \begin{tabular}{p{0.1\textwidth} p{0.4\textwidth} | p{0.4\textwidth}}
+                \hline
+                \tt{man}                    &
+                Briefer \bf{man}ual page    &
+                \tt{\$ man ls}              \\
+                \hline
+                \tt{info}                           &
+                More extensivve \bf{info}rmation    &
+                \tt{\$ info ls}                     \\
+                \hline
+                \tt{whatis}                         &
+                Header of \tt{man} page.            &
+                \tt{\$ whatis ls}                   \\
+                \hline
+                \tt{tldr}             &
+                Web client for a project called tldr-pages; 
+                \url{tldr.ostera.io} &
+                \tt{\$ tldr ls}       \\
+                \hline
+        \end{tabular}   \\
+        Online search engines.
+\end{frame}
+
+% Page 11 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{File content}
+        \begin{tabular}{p{0.1\textwidth} p{0.4\textwidth} | p{0.4\textwidth}}
+                \hline
+                \tt{cat}             &
+                Concatenates and prints files on the standard output &
+                \tt{\$ cat file1 file2}       \\
+                \hline
+                \tt{head}             &
+                Outputs the first part of files &
+                \tt{\$ head -n 20 file}       \\
+                \hline
+                \tt{tail}             &
+                Outputs the last part of files &
+                \tt{\$ tail -n 20 file}       \\
+                \hline
+                \tt{less}             &
+                Outputs the first part of files &
+                \tt{\$ head -n 20 file}       \\
+                \hline
+        \end{tabular}  
+\end{frame}
+
+% Page 12 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{File content - Example}
+        \tt{\$ cat "file"}         \\
+        \tt{\$ head -n 2 /dev/urandom}   \\
+        \tt{\$ tail -n 2 "some file"}        \\
+        \tt{\$ less /some/file}                 \\
+\end{frame}
+
+% Page 13 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Finding programs}
+        \begin{tabular}{p{0.1\textwidth} p{0.4\textwidth} | p{0.4\textwidth}}
+                \hline
+                \tt{command -v}             &
+                Finding location of program to run (from \$PATH) &
+                \tt{\$ command -v ls}       \\
+                \hline
+                \tt{which}             &
+                Finding location of program to run (from \$PATH) &
+                \tt{\$ which ls}       \\
+                \hline
+        \end{tabular}
+\end{frame}
+
+% Page 14 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Piping}
+        Communication between programs.     \\
+        \tt{\$ ls | wc -l | sort -u}        \\
+
+        Writing to file.    \\
+        \tt{\$ ls > file}   \\
+        \tt{\$ > file ls}   \\
+
+        Reading from file.    \\
+        \tt{\$ wc < file}   \\
+        \tt{\$ < file wc}
+        
+        Appending to file.    \\
+        \tt{\$ echo hello >> file}   \\
+        \tt{\$ >> file echo hello }
+\end{frame}
+
+% Page 15 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Piping}
+        Combining execution.     \\
+        \tt{\$ ls; echo "hello"}        \\
+
+        First have to succeed.    \\
+        \tt{\$ ls \&\& echo "hello"}        \\
+
+        Execute second if first fails.    \\
+        \tt{\$ ls || echo "hello"}        \\
+
+        Combine them.    \\
+        \tt{\$ (ls || echo "hello") \&\& pwd}        \\
+\end{frame}
+
+% Page 16 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Core utils}
+        A handful of GNU core utils 8,27. \\
+        IEEE Std 1003.1-2008 utilities \\
+        \begin{tabular}{p{0.1\textwidth} p{0.4\textwidth} | p{0.4\textwidth}}
+                \hline
+                \tt{date}             &
+                Prints or sets the system date and time &
+                \tt{\$ date --date="fortnight"}       \\
+                \hline
+                \tt{dd}             &
+                Copies and converts a file  &
+                \tt{\$ dd if=/home/ubuntu.iso of=/dev/usb0}       \\
+                \hline
+                \tt{df}             &
+                Shows disk free space on file systems   &
+                \tt{\$ df -h dir/file.txt}       \\
+                \hline
+                \tt{du}             &
+                Shows disk usage on file systems &
+                \tt{\$ du -h dir/file.txt}       \\
+                \hline
+                \tt{ln}             &
+                Creates a link (shortcut) to a file &
+                \tt{\$ ln -s existing\_file link}       \\
+                \hline
+                \tt{false}             &
+                Does nothing, but exits unsuccessfully &
+                \tt{\$ false}       \\
+                \hline
+        \end{tabular}
+\end{frame}
+
+% Page 17 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Core utils}
+        \begin{tabular}{p{0.1\textwidth} p{0.4\textwidth} | p{0.4\textwidth}}
+                \hline
+                \tt{mktemp}             &
+                Creates a temporary file or directory &
+                \tt{\$ mktemp }       \\
+                \hline
+                \tt{nl}             &
+                Numbers lines of files &
+                \tt{\$ nl file}       \\
+                \hline
+                \tt{printf}             &
+                Formats and prints data  &
+                \tt{\$ printf "0x\%x" 20}       \\
+                \hline
+                \tt{pwd}             &
+                Prints the current working directory &
+                \tt{\$ pwd}       \\
+                \hline
+                \tt{seq}             &
+                Prints a sequence of numbers  &
+                \tt{\$ seq 1 7 32}       \\
+                \hline
+                \tt{shuf}             &
+                Generate random permutations &
+                \tt{\$ shuf -u fil}       \\
+                \hline
+                \tt{sleep}             &
+                Delays for a specified amount of time &
+                \tt{\$ sleep 30 1m}       \\
+                \hline
+        \end{tabular}
+\end{frame}
+
+% Page 18 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Core utils}
+        \begin{tabular}{p{0.1\textwidth} p{0.4\textwidth} | p{0.4\textwidth}}
+                \hline
+                \tt{sort}             &
+                Sort lines of text files  &
+                \tt{\$ sort -u file}       \\
+                \hline
+                \tt{stat}             &
+                Returns data about an inode &
+                \tt{\$ stat file}       \\
+                \hline
+                \tt{tac}             &
+                Concatenates and prints files in reverse order line by line &
+                \tt{\$ tac file}       \\
+                \hline
+                \tt{tee}             &
+                Sends output to multiple files &
+                \tt{\$ tee file}       \\
+                \hline
+                \tt{tr}             &
+                Translates or deletes characters &
+                \tt{\$ tr "{\textbackslash}n" "{\textbackslash}t"}       \\
+                \hline
+                \tt{true}             &
+                Does nothing, but exits successfully &
+                \tt{\$ true}       \\
+                \hline
+        \end{tabular}
+\end{frame}
+
+% Page 19 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Core utils}
+        \begin{tabular}{p{0.1\textwidth} p{0.4\textwidth} | p{0.4\textwidth}}
+                \hline
+                \tt{wc}             &
+                Prints the number of bytes, words, and lines in files &
+                \tt{\$ wc -l file}       \\
+                \hline
+                \tt{yes}             &
+                Prints a string repeatedly &
+                \tt{\$ yes no}       \\
+                \hline
+        \end{tabular}
+\end{frame}
+
+\end{document}
