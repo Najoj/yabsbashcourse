@@ -11,44 +11,118 @@
 \let\ul\underline
 
 \title{Using the shell}
+<<<<<<< Updated upstream
 \date{28 October 2021}
+=======
+\date{2 November 2021}
+>>>>>>> Stashed changes
 \author{Johan Öhlin}
 \institute{Yabs}
 
 \begin{document}
 % Page 1 (title) %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+<<<<<<< Updated upstream
 \maketitle
 
 % Page 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{grep}
+=======
+\begin{frame}{Using the shell}
+\maketitle
+\end{frame}
+
+% Page 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{grep}
+        \tt{\$ whatis grep}\\
+        \tt{grep (1)  - print lines that match patterns}\\
+        \tt{\$ cat file.txt} \\
+        \tt{word} \\
+        \tt{hello} \\
+        \tt{swordfish} \\
+        \tt{\$ grep word file.txt} \\
+        \tt{word} \\
+        \tt{swordfish} \\
+        \tt{\$ } \\
+>>>>>>> Stashed changes
 \end{frame}
 
 % Page 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{grep}
+<<<<<<< Updated upstream
+=======
+        Download exercises from GitHub: \\
+        \url{https://github.com/Najoj/yabsbashcourse/blob/main/exercises/2/grep}
+>>>>>>> Stashed changes
 \end{frame}
 
 % Page 4 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{sed}
+<<<<<<< Updated upstream
+=======
+        \tt{\$ whatis sed}\\
+        \tt{grep (1)  - stream editor for filtering and transforming text}\\
+        \tt{\$ cat file.txt} \\
+        \tt{word} \\
+        \tt{hello} \\
+        \tt{swordfish} \\
+        \tt{\$ sed "s/ord/in/" file.txt} \\
+        \tt{word} \\
+        \tt{swordfish} \\
+        \tt{\$ } \\
+>>>>>>> Stashed changes
 \end{frame}
 
 % Page 5 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{sed}
+<<<<<<< Updated upstream
+=======
+        Download exercises from GitHub: \\
+        \url{https://github.com/Najoj/yabsbashcourse/blob/main/exercises/2/sed}
+>>>>>>> Stashed changes
 \end{frame}
 
 % Page 6 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{awk}
+<<<<<<< Updated upstream
+=======
+        \tt{\$ whatis awk}\\
+        \tt{grep (1)  - pattern scanning and text processing language}\\
+        \tt{\$ cat file.txt} \\
+        \tt{word is mighter than the sword} \\
+        \tt{hello world} \\
+        \tt{swordfish} \\
+        \tt{\$ awk '{ print \$2 }' file.txt} \\
+        \tt{is} \\
+        \tt{world} \\
+        \tt{} \\
+        \tt{\$ } \\
+>>>>>>> Stashed changes
 \end{frame}
 
 % Page 7 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{awk}
+<<<<<<< Updated upstream
+=======
+        Download exercises from GitHub: \\
+        \url{https://github.com/Najoj/yabsbashcourse/blob/main/exercises/2/awk}
+>>>>>>> Stashed changes
 \end{frame}
 
 % Page 8 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{find}
+<<<<<<< Updated upstream
+=======
+        \tt{\$ whatis find}\\
+        \tt{find (1)  - search for files in a directory hierarchy}\\
+        \tt{\$ find /home/user -name "file.txt"} \\
+        \tt{./file.txt} \\
+        \tt{\$ } \\
+>>>>>>> Stashed changes
 \end{frame}
 
 % Page 9 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{find}
+<<<<<<< Updated upstream
 \end{frame}
 
 % Page 10 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -61,6 +135,51 @@
 
 % Page 12 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{xargs}
+=======
+        Useful options:\\
+        \begin{tabular}{| l | l}
+                \hline
+                \tt{-name n}     &   Name of file, case sensitive \\
+                \tt{-iname n}    &   Name of file, case insensitive \\
+                \tt{-type n}     &   Type of file. \tt{d} directory, \tt{f} file, etc. \\
+                \tt{-maxdepth n} &   Descend at most \tt{n} directories \\
+                \tt{-mindepth n} &   Descend at least \tt{n} directories \\
+                \tt{-exec cmd }  &   Execute \tt{cmd} on each file found \\
+                \hline
+        \end{tabular} \\
+        \medskip
+        Can use some logic, for example: \\
+        \tt{find . -name n -or -name m}
+\end{frame}
+
+% Page 10 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{find}
+        Download exercises from GitHub: \\
+        \url{https://github.com/Najoj/yabsbashcourse/blob/main/exercises/2/find}
+\end{frame}
+
+% Page 10 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{xargs}
+        \tt{\$ whatis xargs}\\
+        \tt{xargs (1)  - build and execute command lines from standard input}\\
+        \tt{\$ cat file.txt} \\
+        \tt{a} \\
+        \tt{b} \\
+        \tt{fileB.txt} \\
+        \tt{\$ cat file.txt | xargs ls} \\
+        \tt{a:} \\
+        \tt{fileA.txt} \\
+        \tt{} \\
+        \tt{b:} \\
+        \tt{fileB.txt} \\
+        \tt{\$ ls a b} \\
+\end{frame}
+
+% Page 11 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{xargs}
+        Download exercises from GitHub: \\
+        \url{https://github.com/Najoj/yabsbashcourse/blob/main/exercises/2/xargs}
+>>>>>>> Stashed changes
 \end{frame}
 
 \end{document}

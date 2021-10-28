@@ -1,8 +1,9 @@
 *.aux
+*.bak
+*.log
 *.log
 *.nav
 *.out
 *.pdf
 *.snm
 *.toc
-*.log
