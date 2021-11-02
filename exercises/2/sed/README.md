@@ -1,8 +1,8 @@
 Try to figure these out by doing them one step at the time. If you get stuck, move to the next point.
 
-Unless stated, you are assumed to use `grep`, but feel free to try combining other commandns.
+Unless stated, you are assumed to use `sed`, but feel free to try combining other commandns.
 
-You can choose to use `grep arguments file`, `cat file | grep arguments`, or `grep arguments < file`.
+You can choose to use `sed arguments file`, `cat file | sed arguments`, or `sed arguments < file`.
 
 # Exercises for second session of Bash course on Yabs #
 
