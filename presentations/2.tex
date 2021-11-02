@@ -39,7 +39,7 @@
 
 % Page 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{grep}
-        Download exercises from GitHub: \\
+        Find exercises from GitHub: \\
         \url{https://github.com/Najoj/yabsbashcourse/blob/main/exercises/2/grep}
 \end{frame}
 
@@ -73,7 +73,7 @@
 
 % Page 6 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{sed}
-        Download exercises from GitHub: \\
+        Find exercises from GitHub: \\
         \url{https://github.com/Najoj/yabsbashcourse/blob/main/exercises/2/sed}
 \end{frame}
 
@@ -104,23 +104,26 @@
             nextfile & Skip the rest of this file. \\
                 \hline
         \end{tabular} \\
-        %\vpsace
+        \medskip
         See \tt{man} page for more. \\
         \tt{\$ sed 'END \{ print NR \}' < file.txt} \\
 \end{frame}
 
 % Page 9 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{awk}
-        Download exercises from GitHub: \\
+        Find exercises from GitHub: \\
         \url{https://github.com/Najoj/yabsbashcourse/blob/main/exercises/2/awk}
 \end{frame}
 
 % Page 10 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{find}
+        Does \it{not} take files as arguments. \\
         \tt{\$ whatis find}\\
         \tt{find (1)  - search for files in a directory hierarchy}\\
         \tt{\$ find /home/user -name "file.txt"} \\
         \tt{./file.txt} \\
+        \tt{\$ find /home/user -name "file.txt" -exec grep "hi" \{\} + } \\
+        \tt{\$ find /home/user -name "file.txt" -exec grep "hi" \{\} {\textbackslash}\; } \\
         \tt{\$ } \\
 \end{frame}
 
@@ -129,22 +132,24 @@
         Useful options:\\
         \begin{tabular}{| l | l}
                 \hline
-                \tt{-name n}     &   Name of file, case sensitive \\
-                \tt{-iname n}    &   Name of file, case insensitive \\
-                \tt{-type n}     &   Type of file. \tt{d} directory, \tt{f} file, etc. \\
-                \tt{-maxdepth n} &   Descend at most \tt{n} directories \\
-                \tt{-mindepth n} &   Descend at least \tt{n} directories \\
-                \tt{-exec cmd }  &   Execute \tt{cmd} on each file found \\
+                \tt{-name n}            &   Name of file, case sensitive \\
+                \tt{-iname n}           &   Name of file, case insensitive \\
+                \tt{-path n}            &   Path of file, case sensitive \\
+                \tt{-ipath n}           &   Path of file, case insensitive \\
+                \tt{-type n}            &   Type of file. \tt{d} directory, \tt{f} file, etc. \\
+                \tt{-maxdepth n}        &   Descend at most \tt{n} directories \\
+                \tt{-mindepth n}        &   Descend at least \tt{n} directories \\
+                \tt{-exec cmd \{\} + }  &   Execute \tt{cmd} on each file found \\
                 \hline
         \end{tabular} \\
         \medskip
         Can use some logic, for example: \\
-        \tt{find . -name n -or -name m}
+        \tt{find /some/dir -name n -or -name m}
 \end{frame}
 
 % Page 12 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{find}
-        Download exercises from GitHub: \\
+        Find exercises from GitHub: \\
         \url{https://github.com/Najoj/yabsbashcourse/blob/main/exercises/2/find}
 \end{frame}
 
@@ -167,8 +172,16 @@
 
 % Page 14 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{xargs}
-        Download exercises from GitHub: \\
+        Find exercises from GitHub: \\
         \url{https://github.com/Najoj/yabsbashcourse/blob/main/exercises/2/xargs}
 \end{frame}
 
+% Page 15 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Summary}
+        Use the right tool for the right task. \\
+        \tt{sed} and \tt{awk} are languages themselves, we have only touched upon them. \\
+        \tt{grep}, \tt{sed}, and \tt{awk} can usually execute the same task. \\
+        \tt{find} is a multi-tool; it can do a lot at once. \\
+        \tt{xargs} does one thing well.
+\end{frame}
 \end{document}
