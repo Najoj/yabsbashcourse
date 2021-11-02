@@ -1,0 +1,138 @@
+\documentclass{beamer}
+
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+\usetheme{metropolis}
+
+% Aliasing
+\let\tt\texttt
+\let\bf\textbf
+\let\it\itshape
+\let\ul\underline
+\let\tilde\texttildelow
+
+\title{Using the shell}
+\date{4 November 2021}
+\author{Johan Öhlin}
+\institute{Yabs}
+
+\begin{document}
+% Page 1 (title) %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\maketitle
+
+% Page 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Good to know}
+        Commonly used keyboard shortcuts: \\
+        \begin{itemize}
+                \item Previously typed line: $\uparrow$ or C+p
+                \item Other way around: $\downarrow$ or C+n
+                \item Moving back and forward on line:
+                        \begin{itemize}
+                                \item Backword/forward one letter: $\leftarrow$ / $\rightarrow$ or C+b / C+f
+                                \item Backward/forward one word: A+b / A+f
+                                \item Start of line: C+a
+                                \item End of line: C+e
+                        \end{itemize}
+                \item Deleting charachters
+                        \begin{itemize}
+                                \item Remove previous letter: C+h
+                                \item Remove next letter: C+d
+                                \item Remove previous word: C+w
+                                \item Remove next word: A+d
+                                \item Clear line: C+u
+                                \item Clear rest of line: C+k
+                        \end{itemize}
+                \item \it{\bf{Actually}} they cut. Use C+y to paste what you just removed
+                \item Search for used command with C+r
+                \item Clear screen with C+l
+                \item Execute with C+o or C+j
+        \end{itemize}
+\end{frame}
+
+% Page 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Good to know}
+        Commonly used keyboard shortcuts: \\
+        \begin{itemize}
+                \item Search for used command with C+r (back) or C+s (forward)
+                \item Clear screen with C+l
+                \item Execute with C+o or C+j
+                \item Cancel a command with C+c
+                \item Terminate command or shell with C+d
+        \end{itemize}
+\end{frame}
+
+% Page 4 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Aliasing}
+        \begin{itemize}
+                \item You can make use of aliases if you are lazy and don't want to type as much. \\
+                \item Make some guards for commands.    \\
+                \item Make (short) scripts.             \\
+                \item Make a \tt{command} out of your script.
+        \end{itemize}
+\end{frame}
+
+% Page 5 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Aliasing}
+        Command \tt{alias}. \\
+        To show your curent aliases, only type \tt{alias}. \\
+        \tt{\$ whatis alias} \\
+        \tt{alias: nothing appropiate.} \\
+        Different shells will have different ways of creating aliases. \\
+        \begin{itemize}
+                \item \tt{alias l='ls -Cf'}
+                \item \tt{alias rm='rm -i'}
+                \item \tt{alias ab='ls -p | wc -b; whoami'}
+                \item \tt{alias xy='/path/to/script --with-flags'}
+        \end{itemize}
+        See if you have any aliases already, and try to create new ones.
+\end{frame}
+
+% Page 6 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Aliasing \& .bashrc}
+        \begin{itemize}
+                \item To make aliases permanent, i. e. be available each time you start a new instance, you can keep it a bash startup file.
+                \item By default, you Bash startup file will be located in {\it{\tilde}/.bashrc}.
+                \item \bf{Note:} Files starting with . are {\it hidden}, in the regard that \tt{ls} will not show them by default. You might have many various startup, configuration files, and directories. To see those files, you run \tt{ls -a}.
+        \end{itemize}
+\end{frame}
+
+% Page 7 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Aliasing \& .bashrc}
+        \begin{itemize}
+                \item The startup file will be loaded each time you start a new shell. If you wish to load this startup in an already opened shell, you can type \tt{source {\tilde}/.bashrc}.
+                \item You will later learn about scripts and how to make functions. You startup may also contain similar functions which you can use as commands.
+        \end{itemize}
+        You can now try to edit your startup file. \\
+        \bf{Cygwin users:} To locate your startup file, run \tt{realpath {\tilde}/.bashrc | xargs cygpath -w}
+\end{frame}
+
+% Page 8 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{.bashrc \& variables}
+        Other than aliases and fucntions, your startup file can set variables which you might find useful. \\
+        These can be set in the shell straight, but will be no kept between sessions. \\
+        \tt{\$ HW="hello world"}    \\
+        \tt{\$ echo \$HW}           \\
+        Your shell has plenty of these so-called environemnt variablpes already. Those can be viewed with \tt{env}   \\
+        To make enviroment variables you will have the variables ``exported''. \\
+        To export, use command \tt{export} \\
+        \tt{\$ export HW="hello world"}    \\
+        \tt{\$ echo \$HW}           \\
+\end{frame}
+
+% Page 9 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{.bashrc \& variables}
+        Variables within variables: \\
+        \tt{\$ A="Hello"} \\
+        \tt{\$ B="World"} \\
+        \tt{\$ C="\$A \$B"} \\
+        \tt{\$ C="\$C \$C"} \\
+        \tt{\$ echo \$C} \\
+        \tt{Hello World Hello World} \\
+        Can be good practice to use (e. g.) \tt{\$HOME} variable instead of hard-coded path to {\it your} home directory. \\
+        \bf{Note:} If you have a program which looks at the environment variables, you can override it as \tt{\$ VAR=yes env}
+\end{frame}
+
+% Page 10 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{.bashrc \& variables}
+\end{frame}
+\end{document}
