@@ -1,4 +1,6 @@
 *.aux
+*.bak
+*.log
 *.log
 *.nav
 *.out

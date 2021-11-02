@@ -1,0 +1,187 @@
+\documentclass{beamer}
+
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+\usetheme{metropolis}
+
+% Aliasing
+\let\tt\texttt
+\let\bf\textbf
+\let\it\itshape
+\let\ul\underline
+
+\title{Using the shell}
+\date{3 November 2021}
+\author{Johan Öhlin}
+\institute{Yabs}
+
+\begin{document}
+% Page 1 (title) %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Using the shell}
+\maketitle
+\end{frame}
+
+% Page 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{grep}
+        \tt{\$ whatis grep}\\
+        \tt{grep (1)  - print lines that match patterns}\\
+        \tt{\$ cat file.txt} \\
+        \tt{word} \\
+        \tt{hello} \\
+        \tt{swordfish} \\
+        \tt{\$ grep -n word     file.txt} \\
+        \tt{1:word} \\
+        \tt{3:swordfish} \\
+        \tt{\$ grep -ci WORD    file.txt} \\
+        \tt{2} \\
+        \tt{\$ } \\
+\end{frame}
+
+% Page 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{grep}
+        Find exercises from GitHub: \\
+        \url{https://github.com/Najoj/yabsbashcourse/blob/main/exercises/2/grep}
+\end{frame}
+
+% Page 4 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{sed}
+        \tt{\$ whatis sed}\\
+        \tt{sed (1)   - stream editor for filtering and transforming text}\\
+        \tt{\$ cat file.txt} \\
+        \tt{word} \\
+        \tt{hello} \\
+        \tt{swordfish} \\
+        \tt{\$ sed "s/ord/in/" file.txt} \\
+        \tt{win} \\
+        \tt{hello} \\
+        \tt{swinfish} \\
+        \tt{\$ } \\
+\end{frame}
+
+% Page 5 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{sed}
+        \tt{\$ sed "2,4d"              file.txt}\\
+        \tt{\$ sed "s/this/that/"      file.txt}\\  
+        \tt{\$ sed "s/this/that/g"     file.txt}\\  
+        \tt{\$ sed '10,20s/this/that/' file.txt}\\  
+        \tt{\$ sed '10,20d'            file.txt}\\  
+        \tt{\$ sed 'p'                 file.txt}\\  
+        \tt{\$ sed -e '2p' -e '3d"     file.txt}\\  
+        \tt{\$ sed -i "s/this/that/g"  file.txt}\\  
+        \tt{\$ sed -f script-file.sed  file.txt}\\  
+\end{frame}
+
+% Page 6 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{sed}
+        Find exercises from GitHub: \\
+        \url{https://github.com/Najoj/yabsbashcourse/blob/main/exercises/2/sed}
+\end{frame}
+
+% Page 7 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{awk}
+        \tt{\$ whatis awk}\\
+        \tt{awk (1)   - pattern scanning and text processing language}\\
+        \tt{\$ awk "\{ print \$1 \}" } \\
+        \tt{\$ awk "BEGIN \{ printf "wc -l{\textbackslash}n" \} } \\
+        \tt{\quad \quad \{ s+=1 \}} \\
+        \tt{\quad END \{ printf "\%d{\textbackslash}n", \$s \}" file.txt } \\
+        \tt{\$ awk "/match/ \{\ldots \} < file.txt } \\
+        \tt{\$ awk -f script-file.awk file1.txt file2.txt } \\
+\end{frame}
+
+% Page 8 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{awk}
+        Built-in variables and functions\\
+        \begin{tabular}{l|l}
+                \hline
+            ARGC     & Number of arguments. \\
+            NR       & Lines read so far.   \\
+            ENVIRON  & Environment variables. \\
+            FILENAME & Name of file provided. \\
+                \hline
+            getline  & Set \$0 to next input line. \\
+            next     & Skip to next line. \\
+            nextfile & Skip the rest of this file. \\
+                \hline
+        \end{tabular} \\
+        \medskip
+        See \tt{man} page for more. \\
+        \tt{\$ sed 'END \{ print NR \}' < file.txt} \\
+\end{frame}
+
+% Page 9 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{awk}
+        Find exercises from GitHub: \\
+        \url{https://github.com/Najoj/yabsbashcourse/blob/main/exercises/2/awk}
+\end{frame}
+
+% Page 10 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{find}
+        Does \it{not} take files as arguments. \\
+        \tt{\$ whatis find}\\
+        \tt{find (1)  - search for files in a directory hierarchy}\\
+        \tt{\$ find /home/user -name "file.txt"} \\
+        \tt{./file.txt} \\
+        \tt{\$ find /home/user -name "file.txt" -exec grep "hi" \{\} + } \\
+        \tt{\$ find /home/user -name "file.txt" -exec grep "hi" \{\} {\textbackslash}\; } \\
+        \tt{\$ } \\
+\end{frame}
+
+% Page 11 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{find}
+        Useful options:\\
+        \begin{tabular}{| l | l}
+                \hline
+                \tt{-name n}            &   Name of file, case sensitive \\
+                \tt{-iname n}           &   Name of file, case insensitive \\
+                \tt{-path n}            &   Path of file, case sensitive \\
+                \tt{-ipath n}           &   Path of file, case insensitive \\
+                \tt{-type n}            &   Type of file. \tt{d} directory, \tt{f} file, etc. \\
+                \tt{-maxdepth n}        &   Descend at most \tt{n} directories \\
+                \tt{-mindepth n}        &   Descend at least \tt{n} directories \\
+                \tt{-exec cmd \{\} + }  &   Execute \tt{cmd} on each file found \\
+                \hline
+        \end{tabular} \\
+        \medskip
+        Can use some logic, for example: \\
+        \tt{find /some/dir -name n -or -name m}
+\end{frame}
+
+% Page 12 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{find}
+        Find exercises from GitHub: \\
+        \url{https://github.com/Najoj/yabsbashcourse/blob/main/exercises/2/find}
+\end{frame}
+
+% Page 13 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{xargs}
+        \tt{\$ whatis xargs}\\
+        \tt{xargs (1)  - build and execute command lines from standard input}\\
+        \tt{\$ cat file.txt} \\
+        \tt{a} \\
+        \tt{b} \\
+        \tt{fileB.txt} \\
+        \tt{\$ cat file.txt | xargs ls} \\
+        \tt{a:} \\
+        \tt{fileA.txt} \\
+        \tt{} \\
+        \tt{b:} \\
+        \tt{fileB.txt} \\
+        \tt{\$ ls a b} \\
+\end{frame}
+
+% Page 14 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{xargs}
+        Find exercises from GitHub: \\
+        \url{https://github.com/Najoj/yabsbashcourse/blob/main/exercises/2/xargs}
+\end{frame}
+
+% Page 15 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Summary}
+        Use the right tool for the right task. \\
+        \tt{sed} and \tt{awk} are languages themselves, we have only touched upon them. \\
+        \tt{grep}, \tt{sed}, and \tt{awk} can usually execute the same task. \\
+        \tt{find} is a multi-tool; it can do a lot at once. \\
+        \tt{xargs} does one thing well.
+\end{frame}
+\end{document}
