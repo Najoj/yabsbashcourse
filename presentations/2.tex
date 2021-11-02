@@ -11,7 +11,7 @@
 \let\ul\underline
 
 \title{Using the shell}
-\date{2 November 2021}
+\date{3 November 2021}
 \author{Johan Öhlin}
 \institute{Yabs}
 
@@ -29,9 +29,11 @@
         \tt{word} \\
         \tt{hello} \\
         \tt{swordfish} \\
-        \tt{\$ grep word file.txt} \\
-        \tt{word} \\
-        \tt{swordfish} \\
+        \tt{\$ grep -n word     file.txt} \\
+        \tt{1:word} \\
+        \tt{3:swordfish} \\
+        \tt{\$ grep -ci WORD    file.txt} \\
+        \tt{2} \\
         \tt{\$ } \\
 \end{frame}
 
@@ -50,19 +52,23 @@
         \tt{hello} \\
         \tt{swordfish} \\
         \tt{\$ sed "s/ord/in/" file.txt} \\
-        \tt{word} \\
-        \tt{swordfish} \\
+        \tt{win} \\
+        \tt{hello} \\
+        \tt{swinfish} \\
         \tt{\$ } \\
 \end{frame}
 
 % Page 5 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{sed}
-        \tt{\$ sed -e "1d"             file.txt}\\
+        \tt{\$ sed "2,4d"              file.txt}\\
         \tt{\$ sed "s/this/that/"      file.txt}\\  
         \tt{\$ sed "s/this/that/g"     file.txt}\\  
         \tt{\$ sed '10,20s/this/that/' file.txt}\\  
         \tt{\$ sed '10,20d'            file.txt}\\  
         \tt{\$ sed 'p'                 file.txt}\\  
+        \tt{\$ sed -e '2p' -e '3d"     file.txt}\\  
+        \tt{\$ sed -i "s/this/that/g"  file.txt}\\  
+        \tt{\$ sed -f script-file.sed  file.txt}\\  
 \end{frame}
 
 % Page 6 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -75,24 +81,41 @@
 \begin{frame}{awk}
         \tt{\$ whatis awk}\\
         \tt{awk (1)   - pattern scanning and text processing language}\\
-        \tt{\$ cat file.txt} \\
-        \tt{word is mighter than the sword} \\
-        \tt{hello world} \\
-        \tt{swordfish} \\
-        \tt{\$ awk '{ print \$2 }' file.txt} \\
-        \tt{is} \\
-        \tt{world} \\
-        \tt{} \\
-        \tt{\$ } \\
+        \tt{\$ awk "\{ print \$1 \}" } \\
+        \tt{\$ awk "BEGIN \{ printf "wc -l{\textbackslash}n" \} } \\
+        \tt{\quad \quad \{ s+=1 \}} \\
+        \tt{\quad END \{ printf "\%d{\textbackslash}n", \$s \}" file.txt } \\
+        \tt{\$ awk "/match/ \{\ldots \} < file.txt } \\
+        \tt{\$ awk -f script-file.awk file1.txt file2.txt } \\
 \end{frame}
 
 % Page 8 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{awk}
+        Built-in variables and functions\\
+        \begin{tabular}{l|l}
+                \hline
+            ARGC     & Number of arguments. \\
+            NR       & Lines read so far.   \\
+            ENVIRON  & Environment variables. \\
+            FILENAME & Name of file provided. \\
+                \hline
+            getline  & Set \$0 to next input line. \\
+            next     & Skip to next line. \\
+            nextfile & Skip the rest of this file. \\
+                \hline
+        \end{tabular} \\
+        %\vpsace
+        See \tt{man} page for more. \\
+        \tt{\$ sed 'END \{ print NR \}' < file.txt} \\
+\end{frame}
+
+% Page 9 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{awk}
         Download exercises from GitHub: \\
         \url{https://github.com/Najoj/yabsbashcourse/blob/main/exercises/2/awk}
 \end{frame}
 
-% Page 9 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Page 10 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{find}
         \tt{\$ whatis find}\\
         \tt{find (1)  - search for files in a directory hierarchy}\\
@@ -101,7 +124,7 @@
         \tt{\$ } \\
 \end{frame}
 
-% Page 10 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Page 11 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{find}
         Useful options:\\
         \begin{tabular}{| l | l}
@@ -119,13 +142,13 @@
         \tt{find . -name n -or -name m}
 \end{frame}
 
-% Page 11 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Page 12 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{find}
         Download exercises from GitHub: \\
         \url{https://github.com/Najoj/yabsbashcourse/blob/main/exercises/2/find}
 \end{frame}
 
-% Page 12 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Page 13 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{xargs}
         \tt{\$ whatis xargs}\\
         \tt{xargs (1)  - build and execute command lines from standard input}\\
@@ -142,7 +165,7 @@
         \tt{\$ ls a b} \\
 \end{frame}
 
-% Page 13 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Page 14 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{xargs}
         Download exercises from GitHub: \\
         \url{https://github.com/Najoj/yabsbashcourse/blob/main/exercises/2/xargs}
