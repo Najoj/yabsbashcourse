@@ -14,15 +14,15 @@ Format of `playlist.txt` is `artist - songtitle (length)` where the `length` is 
 
 * Look at the first artist in the playlist with `head -n1`.
 
-** Can you find all songs by the first artist?
+* * Can you find all songs by the first artist?
 
-** Use `grep` to count how many songs by this artist.
+* * Use `grep` to count how many songs by this artist.
 
 * Can you find all songs which are shorter than 1:00?
 
 * Print only the songs which contain the the word `Cop`, i. e. not in artist's name, and exactly this word.
 
-** Can you print only the song songs which contain the the word `Cop`, i. e. not in artist's name, and exactly this word.
+* * Can you print only the song songs which contain the the word `Cop`, i. e. not in artist's name, and exactly this word.
 
 * How would you go about finding the artist `$wingin' Utter$` in the playlist? Think of it as a general script to find artist `A`. By default, `grep` will try to do regex match by default.
 
