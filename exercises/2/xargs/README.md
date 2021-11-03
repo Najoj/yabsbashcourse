@@ -4,8 +4,7 @@ Unless stated, you are assumed to use `xargs`, but feel free to try combining ot
 
 # Exercises for second session of Bash course on Yabs #
 
-# Populate a file with names of files (you should know how to do this by now). Feed this file to `xargs` to run `grep` on for some pattern.
+* Populate a file with names of files (you should know how to do this by now). Feed this file to `xargs` to run `grep` on for some pattern.
 
-# Populate a file with names of files (you should know how to do this by now). Feed this file to `xargs` to run `grep` on for some pattern.
-
+* Use `find` to locate your newly created files, and feed those in to `xargs`, i. e. `find . | xargs`.
 
