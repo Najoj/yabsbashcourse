@@ -7,7 +7,7 @@ Material for Bash course by me at work
 
 * Session 2: `grep`, `awk`, `sed`, and `find`.
 
-* Session 3: Aliasing, common signals, .bashrc, simple scripts perhaps. (_TODO_)
+* Session 3: Aliasing, .bashrc, and simple scripts.
 
 * Session 4: More advanced scripting. (_TODO_)
 
