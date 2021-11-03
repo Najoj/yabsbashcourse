@@ -8,13 +8,13 @@ You can choose to use `awk arguments file`, `cat file | awk arguments`, or `awk 
 
 Use the same file as the exercises for `grep`.
 
-# Print the first word of each row in the file.
+* Print the first word of each row in the file.
 
-# Count number of lines in `playlist.txt`. Does it differ from `wc`? Are there more ways to do the same?
+* Count number of lines in `playlist.txt`. Does it differ from `wc`? Are there more ways to do the same?
 
-# Count the number of occuraces of some artist which in the file?
+* Count the number of occuraces of some artist which in the file?
 
-# Only print the lines with artist having `The` to start with. _Tip:_ To match starting line in regular expression use ^.
+* Only print the lines with artist having `The` to start with. _Tip:_ To match starting line in regular expression use ^.
 
-## How many lines are there matching with starting `The`?
+* * How many lines are there matching with starting `The`?
 
