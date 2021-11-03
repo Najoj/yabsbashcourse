@@ -28,12 +28,22 @@
                 \item Other way around: $\downarrow$ or C+n
                 \item Moving back and forward on line:
                         \begin{itemize}
-                                \item Backword/forward one letter: $\leftarrow$ / $\rightarrow$ or C+b / C+f
+                                \item Backward/forward one letter: $\leftarrow$ / $\rightarrow$ or C+b / C+f
                                 \item Backward/forward one word: A+b / A+f
                                 \item Start of line: C+a
                                 \item End of line: C+e
                         \end{itemize}
-                \item Deleting charachters
+                \item Search for used command with C+r
+                \item Clear screen with C+l
+                \item Execute with C+o or C+j
+        \end{itemize}
+\end{frame}
+
+% Page 2.5 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Good to know}
+        Commonly used keyboard shortcuts: \\
+        \begin{itemize}
+                \item Deleting characters
                         \begin{itemize}
                                 \item Remove previous letter: C+h
                                 \item Remove next letter: C+d
@@ -42,10 +52,7 @@
                                 \item Clear line: C+u
                                 \item Clear rest of line: C+k
                         \end{itemize}
-                \item \it{\bf{Actually}} they cut. Use C+y to paste what you just removed
-                \item Search for used command with C+r
-                \item Clear screen with C+l
-                \item Execute with C+o or C+j
+                \item \bf{Actually} they cut. Use C+y to paste what you just removed, but only the last keypress.
         \end{itemize}
 \end{frame}
 
@@ -73,16 +80,17 @@
 
 % Page 5 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Aliasing}
-        Command \tt{alias}. \\
-        To show your curent aliases, only type \tt{alias}. \\
+        To show your current aliases, only type \tt{alias}. \\
         \tt{\$ whatis alias} \\
-        \tt{alias: nothing appropiate.} \\
-        Different shells will have different ways of creating aliases. \\
+        \tt{alias: nothing appropriate.} \\
+        \bf{Note:} Different shells will have different ways of creating aliases. \\
         \begin{itemize}
                 \item \tt{alias l='ls -Cf'}
                 \item \tt{alias rm='rm -i'}
                 \item \tt{alias ab='ls -p | wc -b; whoami'}
                 \item \tt{alias xy='/path/to/script --with-flags'}
+                \item \tt{alias listfiles='ls'}
+                \item \tt{alias listfiles='l'}
         \end{itemize}
         See if you have any aliases already, and try to create new ones.
 \end{frame}
@@ -92,7 +100,7 @@
         \begin{itemize}
                 \item To make aliases permanent, i. e. be available each time you start a new instance, you can keep it a bash startup file.
                 \item By default, you Bash startup file will be located in {\it{\tilde}/.bashrc}.
-                \item \bf{Note:} Files starting with . are {\it hidden}, in the regard that \tt{ls} will not show them by default. You might have many various startup, configuration files, and directories. To see those files, you run \tt{ls -a}.
+                \bf{Note:} Files starting with . are {\it hidden}, in the regard that \tt{ls} will not show them by default. You might have many various startup, configuration files and directories in your home directory. To see those files, you run \tt{ls -a}.
         \end{itemize}
 \end{frame}
 
@@ -103,28 +111,44 @@
                 \item You will later learn about scripts and how to make functions. You startup may also contain similar functions which you can use as commands.
         \end{itemize}
         You can now try to edit your startup file. \\
-        \bf{Cygwin users:} To locate your startup file, run \tt{realpath {\tilde}/.bashrc | xargs cygpath -w}
+        \bf{Cygwin users:} To locate your startup file, run \\
+        \quad \tt{\$ realpath {\tilde}/.bashrc | xargs cygpath -w}
 \end{frame}
 
 % Page 8 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{.bashrc \& variables}
-        Other than aliases and fucntions, your startup file can set variables which you might find useful. \\
+        Other than aliases and functions, your startup file can set variables which you might find useful. \\
         These can be set in the shell straight, but will be no kept between sessions. \\
-        \tt{\$ HW="hello world"}    \\
+        \tt{\$ HW="Hello world"}    \\
         \tt{\$ echo \$HW}           \\
-        Your shell has plenty of these so-called environemnt variablpes already. Those can be viewed with \tt{env}   \\
-        To make enviroment variables you will have the variables ``exported''. \\
+        Your shell has plenty of these so-called environment variables already. Those can be viewed with \tt{env}   \\
+        To make environment variables you will have the variables {\it exported}. \\
         To export, use command \tt{export} \\
-        \tt{\$ export HW="hello world"}    \\
-        \tt{\$ echo \$HW}           \\
+        \tt{\$ export HW="Hello world"}    \\
+\end{frame}
+
+% Page 8.5 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{.bashrc \& variables}
+        \tt{\$ echo \$HW }          \\
+        \tt{ }                      \\
+        \tt{\$ HW="Hello World" }   \\
+        \tt{\$ echo \$HW }          \\
+        \tt{Hello World}            \\
+        \tt{\$ env | grep HW}       \\
+        \tt{\$ export HW}           \\
+        \tt{\$ env | grep HW}       \\
+        \tt{HW=}                    \\
+        \tt{\$ export HW="Hello World"} \\
+        \tt{\$ env | grep HW}       \\
+        \tt{HW=Hello World}         \\
 \end{frame}
 
 % Page 9 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{.bashrc \& variables}
         Variables within variables: \\
         \tt{\$ A="Hello"} \\
-        \tt{\$ B="World"} \\
-        \tt{\$ C="\$A \$B"} \\
+        \tt{\$ b="World"} \\
+        \tt{\$ C="\$A \$b"} \\
         \tt{\$ C="\$C \$C"} \\
         \tt{\$ echo \$C} \\
         \tt{Hello World Hello World} \\
@@ -133,6 +157,57 @@
 \end{frame}
 
 % Page 10 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{.bashrc \& variables}
+\begin{frame}{.bashrc \& functions}
+        Result of command in variable.  \\
+        \tt{\$ A=\$(ls) }               \\
+        \tt{\$ echo \$A }               \\
+        \tt{file1}                      \\
+        \tt{file2}                      \\
+        \tt{\$ echo \$A | head -n1 }    \\
+        \tt{file1}                      \\
+        \tt{\$}
+\end{frame}
+
+% Page 11 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{.bashrc \& functions}
+        You can have functions in your startup file instead of aliases. \\
+        \tt{\$ cat {\tilde}/.bashrc}    \\
+        \tt{function notls \{ }         \\
+        \quad \tt{echo "This is not \$VAR"} \\
+        \quad \tt{\$VAR | cat -n }      \\
+        \tt{\} }                        \\
+        \tt{VAR="ls"}                   \\
+        \bf{Note:} This (above) can written directly into your shell. \\
+\end{frame}
+
+% Page 12 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Functions}
+        Write in to your shell. The indentations are not important. \\
+        \tt{\$ function notls \{ }         \\
+        \quad \tt{echo "This is not \$VAR"} \\
+        \quad \tt{\$VAR | cat -n }      \\
+        \tt{\} }                        \\
+        Run \tt{notls} in shell. Set \tt{VAR} and run again: \\
+        \tt{\$ VAR="ls"}                   \\
+        Change \tt{VAR} and run again:     \\
+        \tt{\$ VAR="whoami"}               \\
+\end{frame}
+
+% Page 12 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Functions}
+        You can call fucntions from functions.  \\
+        \tt{\$ function hightlightk \{ }        \\
+        \quad \# Colour the letter k            \\
+        \quad \tt{notls | grep --color 'k'}     \\
+        \tt{\} }                        \\
+\end{frame}
+
+% Page 13 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{.bashrc \& functions}
+        To use arguments:                       \\
+        \tt{\$ function hightlightk \{ }        \\
+        \quad \# Colour \$1 from notls          \\
+        \quad \tt{notls | grep --color '\$1' }  \\
+        \tt{\} }                                \\
 \end{frame}
 \end{document}
