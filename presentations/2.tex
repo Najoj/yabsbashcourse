@@ -82,9 +82,9 @@
         \tt{\$ whatis awk}\\
         \tt{awk (1)   - pattern scanning and text processing language}\\
         \tt{\$ awk "\{ print \$1 \}" } \\
-        \tt{\$ awk "BEGIN \{ printf "wc -l{\textbackslash}n" \} } \\
+        \tt{\$ awk 'BEGIN \{ printf "wc -l{\textbackslash}n" \} } \\
         \tt{\quad \quad \{ s+=1 \}} \\
-        \tt{\quad END \{ printf "\%d{\textbackslash}n", \$s \}" file.txt } \\
+        \tt{\quad END \{ printf "\%d{\textbackslash}n", s \}' file.txt } \\
         \tt{\$ awk "/match/ \{\ldots \} < file.txt } \\
         \tt{\$ awk -f script-file.awk file1.txt file2.txt } \\
 \end{frame}
@@ -117,7 +117,7 @@
 
 % Page 10 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{find}
-        Does \it{not} take files as arguments. \\
+        Does {\it not} take files as arguments. \\
         \tt{\$ whatis find}\\
         \tt{find (1)  - search for files in a directory hierarchy}\\
         \tt{\$ find /home/user -name "file.txt"} \\
