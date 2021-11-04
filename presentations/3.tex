@@ -137,10 +137,9 @@
         \tt{\$ env | grep HW}       \\
         \tt{\$ export HW}           \\
         \tt{\$ env | grep HW}       \\
-        \tt{HW=}                    \\
-        \tt{\$ export HW="Hello World"} \\
-        \tt{\$ env | grep HW}       \\
         \tt{HW=Hello World}         \\
+        \tt{\$ export HW="Bye World"} \\
+        \tt{HW=Bye}                 \\
 \end{frame}
 
 % Page 9 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -164,8 +163,9 @@
         \tt{file1}                      \\
         \tt{file2}                      \\
         \tt{\$ echo \$A | head -n1 }    \\
-        \tt{file1}                      \\
-        \tt{\$}
+        \tt{file1 file2}                \\
+        \tt{\$}                         \\
+        \bf{Note:} Different shells whill handle this differently.
 \end{frame}
 
 % Page 11 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -207,7 +207,7 @@
         To use arguments:                       \\
         \tt{\$ function hightlightk \{ }        \\
         \quad \# Colour \$1 from notls          \\
-        \quad \tt{notls | grep --color '\$1' }  \\
+        \quad \tt{notls | grep --color "\$1" }  \\
         \tt{\} }                                \\
 \end{frame}
 
