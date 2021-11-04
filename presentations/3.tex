@@ -210,4 +210,41 @@
         \quad \tt{notls | grep --color '\$1' }  \\
         \tt{\} }                                \\
 \end{frame}
+
+% Page 14 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{functions}
+        \bf{Warining:} You can recursively run you function. Just make sure to avoid {\it fork bombs}.  \\
+        \tt{\$ function f \{ }        \\
+        \quad \tt{ f | f {\&}}  \\
+        \tt{\} }                                \\
+\end{frame}
+
+% Page 15 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{\&}
+        To start a process in the background, you can end the line with one single ampersand.   \\
+        \tt{\$ sleep 30 {\&} }    \\
+        To see which processes you have started, use the command \tt{jobs}. \\
+        \tt{\$ jobs }  \\
+        \tt{[2]- Kör sleep 20 {\&}}  \\
+        You can set it as a foreground proccess again with the command \tt{fg}.
+        \tt{\$ fg}  \\
+        \tt{} \\
+\end{frame}
+
+% Page 16 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{\&}
+        To make a foreground process into a background process, you have to stop the process. This is achieved with C-z. \\
+        You can later make it into a background process with the command \tt{bg}.   \\
+        The process will still be connected to you shell. To dispatch it, use \tt{disown}. \\
+        \tt{\$ jobs}                    \\
+        \tt{\$ sleep 20}                \\
+        \tt{\^Z}                        \\
+        \tt{[1]+  Stoppad   sleep 20}   \\
+        \tt{\$ bg}                      \\
+        \tt{[1]+ sleep 20 {\&}}         \\
+        \tt{\$ \# Wait for 20 seconds }  \\
+        \tt{[1]+  Klart     sleep 20}   \\
+        \tt{\$ }                        \\
+\end{frame}
+
 \end{document}
