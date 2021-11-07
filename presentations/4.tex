@@ -11,7 +11,7 @@
 \let\ul\underline
 
 \title{Using the shell}
-\date{16 November 2021}
+\date{9 November 2021}
 \author{Johan Öhlin}
 \institute{Yabs}
 
@@ -24,5 +24,215 @@
 
 % Page 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Scripts}
+        \tt{\#!/bin/bash}               \\
+        \tt{echo -n "Hello \$USER. "}   \\
+        \tt{echo "Script \$0 started"}  \\
+        \quad                           \\
+        Save as \tt{script.bash}.
+\end{frame}
+
+% Page 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Executing scripts}
+        \tt{\#!/bin/bash}               \\
+        \tt{echo -n "Hello \$USER. "}   \\
+        \tt{echo "Script \$0 started"}  \\
+        \quad                           \\
+        Execute method:                 \\
+        \quad \tt{\$ bash script.bash}      \\
+        Make executable and run:            \\
+        \quad \tt{\$ chmod +x script.bash}  \\
+        \quad \tt{\$ ./script.bash}         \\
+\end{frame}
+
+% Page 4 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{read}
+        \tt{\#!/bin/bash}                   \\
+        \tt{echo "What is your name?"}      \\
+        \tt{read NAME}                      \\
+        \tt{echo -n "Hello \$NAME. "}       \\
+        \tt{echo "Script \$0 started"}      \\
+        \quad \\
+        What if the user doesn't provide any name?
+\end{frame}
+
+% Page 5 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{if-then-else}
+        \tt{if [[ \$A -gt \$B ]]; then}   \\
+        \quad \tt{...}                  \\
+        \tt{elif ls | grep "file"; then}\\
+        \quad \tt{...}                  \\
+        \tt{else}                       \\
+        \quad \tt{...}                  \\
+        \tt{fi}                         \\
+\end{frame}
+
+% Page 6 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Conditions}
+        Arithmetic \\
+        \begin{tabular}{l l}
+                \tt{\$A -gt \$B}    &   Greater than                \\
+                \tt{\$A -ge \$B}    &   Greater than or equal to    \\
+                \tt{\$A -eq \$B}    &   Equal to                    \\
+                \tt{\$A -le \$B}    &   Lesser than or equal to     \\
+                \tt{\$A -lt \$B}    &   Lesser than                 \\
+        \end{tabular}
+\end{frame}
+
+% Page 7 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Conditions}
+        Strings    \\
+        \begin{tabular}{l l}
+                \tt{-v \$string}    &   String has value assigned   \\
+                \tt{-z \$string}    &   String has zero length      \\
+                \tt{-n \$string}    &   String has non-zero length  \\
+                \tt{\$string1 == \$string2}    &   Exactly the same value   \\
+                \tt{\$string1 != \$string2}    &   Not the same values      \\
+                \tt{\$string1 < \$string2}     &   \tt{\$string1} goes before \tt{\$string2} \\
+                \tt{\$string1 > \$string2}     &   \tt{\$string1} goes after \tt{\$string2} \\
+        \end{tabular}
+\end{frame}
+
+% Page 8 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Conditions}
+        Files      \\
+        \begin{tabular}{l l}
+                \tt{-a \$file}    &   File exist                    \\
+                \tt{-b \$file}    &   File exist and is a block     \\
+                \tt{-c \$file}    &   File exist and is a character \\
+                \tt{-d \$file}    &   File exist and is a directory \\
+                \tt{-e \$file}    &   File exist                    \\
+                \tt{-f \$file}    &   File exist and is a regular file  \\
+                \tt{-h \$file}    &   File exist and is symbolic link   \\
+                \tt{-r \$file}    &   File exist and is readable    \\
+                \tt{-s \$file}    &   File exist and greater than zero is size \\
+                \tt{-w \$file}    &   File exist and is writable    \\
+                \tt{-x \$file}    &   File exist and is executable  \\
+                \tt{-L \$file}    &   File exist and is symbolic link   \\
+        \end{tabular}
+\end{frame}
+
+% Page 9 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Conditions}
+        Can be logically combined: \\
+        \tt{ ( [[ \$A -gt \$B ]] || [[ \$C == \$D ]]) \&\& [[ -r \$FILE ]] } \\
+        \quad \\
+        Can be written directly in the shell:   \\
+        \tt{\$ [[ -e \$FILE ]] \&\& rm -v \$FILE} \\
+\end{frame}
+
+% Page 10 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Conditions}
+        \tt{\#!/bin/bash}                   \\
+        \tt{echo "What is your name?"}      \\
+        \tt{read NAME}                      \\
+        \tt{if [[ -z \$NAME ]]; then}       \\
+        \quad \tt{NAME=\$USER}              \\
+        fi                                  \\
+        \tt{echo -n "Hello \$NAME. "}       \\
+        \tt{echo "Script \$0 started"}      \\
+\end{frame}
+
+% Page 11 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Arguments}
+        \tt{\#!/bin/bash}                       \\
+        \tt{echo "Number of arguments: \$\#"}   \\
+        \tt{echo "And they are. \$@"}           \\
+\end{frame}
+
+% Page 12 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Loops}
+        \tt{\#!/bin/bash}                       \\
+        \tt{echo "Number of arguments: \$\#"}   \\
+        \tt{echo "And they are: \$@"}           \\
+        \tt{for arg in \$@; do}                 \\
+        \quad \tt{echo \$arg}                   \\
+        \tt{done}                               \\
+        \tt{for \_ in \{1..10\}; do}            \\
+        \quad \tt{echo "Hello"}                 \\
+        \tt{done}                               \\
+        \tt{for i in \{1..10..3\}; do}          \\
+        \quad \tt{echo "\$i"}                   \\
+        \tt{done}                               \\
+        \tt{for((i=0; i<20; i++)); do}          \\
+        \quad \tt{echo "\$i"}                   \\
+        \tt{done}                               \\
+\end{frame}
+
+% Page 13 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Array}
+        \tt{\#!/bin/bash}                       \\
+        \tt{ARRAY=(a b c 1 2 3)}                \\
+        \tt{for e in \$\{ARRAY[*]\}; do}        \\
+        \quad \tt{echo \$e}                     \\
+        done                                    \\
+        echo "\$\{ARRAY[0]\}"                   \\
+        echo "\$\{ARRAY[20]\}"                  \\
+        echo "\$\{ARRAY[-1]\}"                  \\
+        B=\$\{A[@]\}                            \\
+        echo "\$B"
+\end{frame}
+
+% Page 14 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Maths}
+        \tt{\#!/bin/bash}                       \\
+        \tt{A=\$((1+2))}                        \\
+        \tt{echo \$A}                           \\
+        \tt{((A=A+RANDOM))}                     \\
+        \tt{echo \$A}                           \\
+        \tt{((A++))}                            \\
+        \tt{echo \$A}                           \\
+\end{frame}
+
+% Page 15 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{while}
+        \tt{\#!/bin/bash}                       \\
+        \tt{while [[ \$A -le \$\# ]]; do}       \\
+        \quad \tt{ ((A+=1+A)) }                 \\
+        \tt{done}                               \\
+        \tt{echo \$A}
+        \tt{while true; do}                     \\
+        \quad \tt{((A++))}                      \\
+        \quad \tt{if [[ \$A -gt 20 ]]; then}    \\
+        \quad \quad \tt{break}                  \\
+        \quad \tt{elif [[ \$A -lt 5 ]]; then}   \\
+        \quad \quad \tt{continue}               \\
+        \quad \tt{fi}                           \\
+        \tt{done}                               \\
+        \tt{echo \$A}
+\end{frame}
+
+% Page 16 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{switch-case}
+        \tt{\#!/bin/bash}                       \\
+        \tt{case \$@ in}                        \\
+        \quad \tt{bar)}                         \\
+        \quad \quad command1                    \\
+        \quad \tt{;;}                           \\
+        \quad \tt{foo)}                         \\
+        \quad \quad command2                    \\
+        \quad \tt{;;}                           \\
+        \quad \tt{*)}                           \\
+        \quad \quad command3                    \\
+        \quad \tt{;;}                           \\
+        \tt{esac}                               \\
+\end{frame}
+
+% Page 17 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{getopts}
+        \tt{getopts} parses command options. Value is set to \tt{\$OPTARG} variable. \\
+        \tt{\#!/bin/bash}   \\
+        \tt{while getopts ":h:a" option; do}        \\
+        \quad \tt{case \$@ in}                      \\
+        \quad \quad \tt{a)}                         \\
+        \quad \quad \quad \tt{AOPTION=\$OPTARG}     \\
+        \quad \quad \tt{;;}                         \\
+        \quad \quad \tt{:)}                         \\
+        \quad \quad \quad \tt{echo "No flag"}       \\
+        \quad \quad \tt{;;}                         \\
+        \quad \quad \tt{*)}                         \\
+        \quad \quad \quad command3                  \\
+        \quad \quad \tt{;;}                         \\
+        \quad \tt{esac}                             \\
+        \tt{done}                                   \\
 \end{frame}
 \end{document}
