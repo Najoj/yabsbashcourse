@@ -82,7 +82,6 @@
 \begin{frame}{Conditions}
         Strings    \\
         \begin{tabular}{l l}
-                \tt{-v \$string}    &   String has value assigned   \\
                 \tt{-z \$string}    &   String has zero length      \\
                 \tt{-n \$string}    &   String has non-zero length  \\
                 \tt{\$string1 == \$string2}    &   Exactly the same value   \\
@@ -97,18 +96,18 @@
         Files      \\
         \begin{tabular}{l l}
                 \tt{-a \$file}    &   File exist                    \\
-                \tt{-b \$file}    &   File exist and is a block     \\
-                \tt{-c \$file}    &   File exist and is a character \\
                 \tt{-d \$file}    &   File exist and is a directory \\
                 \tt{-e \$file}    &   File exist                    \\
                 \tt{-f \$file}    &   File exist and is a regular file  \\
-                \tt{-h \$file}    &   File exist and is symbolic link   \\
                 \tt{-r \$file}    &   File exist and is readable    \\
-                \tt{-s \$file}    &   File exist and greater than zero is size \\
                 \tt{-w \$file}    &   File exist and is writable    \\
                 \tt{-x \$file}    &   File exist and is executable  \\
-                \tt{-L \$file}    &   File exist and is symbolic link   \\
         \end{tabular}
+\end{frame}
+
+% Page 8.5 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Conditions}
+        More can be found in the \tt{man} page of \tt{bash}.
 \end{frame}
 
 % Page 9 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -158,6 +157,39 @@
         \tt{done}                               \\
 \end{frame}
 
+% Page 12.5 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Variables}
+        Assign variables on single line without spaces. \\
+        \tt{A=20}                                       \\
+        \tt{B="Hello World"}                            \\
+        Derefer variables with \tt{\$}. Use with double qoutes.  \\
+        \tt{\$ echo "\$B"}                              \\
+        \tt{Hello World}                                \\
+        \tt{\$ echo '\$B'}                              \\
+        \tt{\$B}
+\end{frame}
+
+% Page 12.5 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Variables}
+        Simple substitution:                            \\
+        \tt{\$ A="Abbas"}                               \\
+        \tt{echo "\$\{A\#Ab\}}                          \\
+        \tt{bas}                                        \\
+        \tt{echo "\$\{A\%as\}}                          \\
+        \tt{Abb}                                        \\
+        \tt{echo "\$\{A:3\}}                            \\
+        \tt{as}                                         \\
+        \tt{echo "\$\{A:1:4\}}                          \\
+        \tt{bbas}                                       \\
+        \tt{echo "\$\{A/b/x}                            \\
+        \tt{Axbas}                                      \\
+        \tt{echo "\$\{A//b/x}                           \\
+        \tt{Axxas}                                      \\
+        \tt{echo "\$\{PWD\#*/}                          \\
+        \tt{home/user}                                  \\
+        \tt{echo "\$\{PWD\#\#*/}                        \\
+        \tt{user}                                       \\
+\end{frame}
 % Page 13 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Array}
         \tt{\#!/bin/bash}                       \\
@@ -172,6 +204,7 @@
         echo "\$B"
 \end{frame}
 
+
 % Page 14 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Maths}
         \tt{\#!/bin/bash}                       \\
@@ -181,6 +214,9 @@
         \tt{echo \$A}                           \\
         \tt{((A++))}                            \\
         \tt{echo \$A}                           \\
+        \quad                                   \\
+        {\it Common programming operations are supported.} \\
+        %From \tt{ ++id } to logical \tt{\!} and bitwise \tt{\tilde} negations.
 \end{frame}
 
 % Page 15 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -198,7 +234,9 @@
         \quad \quad \tt{continue}               \\
         \quad \tt{fi}                           \\
         \tt{done}                               \\
-        \tt{echo \$A}
+        \tt{echo \$A}                           \\
+        \quad                                   \\
+        \tt{while} can be substituted with \tt{util}.
 \end{frame}
 
 % Page 16 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -221,18 +259,83 @@
 \begin{frame}{getopts}
         \tt{getopts} parses command options. Value is set to \tt{\$OPTARG} variable. \\
         \tt{\#!/bin/bash}   \\
-        \tt{while getopts ":h:a" option; do}        \\
+        \tt{while getopts ":h?:a" option; do}       \\
         \quad \tt{case \$@ in}                      \\
         \quad \quad \tt{a)}                         \\
-        \quad \quad \quad \tt{AOPTION=\$OPTARG}     \\
-        \quad \quad \tt{;;}                         \\
-        \quad \quad \tt{:)}                         \\
-        \quad \quad \quad \tt{echo "No flag"}       \\
-        \quad \quad \tt{;;}                         \\
+        \quad \quad \quad \tt{AOPTION=\$OPTARG} \tt{;;} \\
+        \quad \quad \tt{h|?)}                           \\
+        \quad \quad \quad \tt{AOPTION=\$OPTARG} \tt{;;} \\
+        \quad \quad \tt{:)}                             \\
+        \quad \quad \quad \tt{echo "No flag"} \tt{;;}   \\
         \quad \quad \tt{*)}                         \\
         \quad \quad \quad command3                  \\
         \quad \quad \tt{;;}                         \\
         \quad \tt{esac}                             \\
         \tt{done}                                   \\
+\end{frame}
+
+% Page 18 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{getopts}
+        \bf{Tip:} To unset a variable, to ensure it doesn't already exist, use \tt{unset}.      \\
+        \bf{Tip:} To have a default value of a variable, you can use \tt{\$\{VAR:-default\}}    \\
+        \quad                                           \\
+        You can iterate through variables by shifting.  \\
+        \tt{\#!/bin/bash}           \\
+        \tt{while [[ \$1 ]]; do}    \\
+        \quad \tt{echo \$1}         \\
+        \quad \tt{shift}            \\
+        \tt{done}                   \\
+\end{frame}
+
+% Page 18 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{functions}
+        \tt{\#!/bin/bash}               \\
+        \tt{function help \{ }      \\
+        \quad \tt{cat << eof}       \\
+        \tt{use: cmd [blah blah]}   \\
+        \tt{eof}                    \\
+        \tt{\}}                     \\
+\end{frame}
+
+% Page 19 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{functions}
+        \tt{\#!/bin/bash}               \\
+        \tt{function find\_txt \{ }                 \\
+        \quad \tt{find . -type f -name "*.txt"}     \\
+        \tt{\}}                                     \\
+        \tt{function pretty\_print \{ }             \\
+        \quad \tt{cat | nl}                         \\
+        \tt{\}}                                     \\
+        \tt{find\_txt | pretty\_print}              \\
+\end{frame}
+
+% Page 20 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{alias}
+        \tt{\#!/bin/bash}                                   \\
+        \tt{shopt -s expad\_aliases}                        \\
+        \tt{alias find\_txt='find . -type f -name "*.txt"'} \\
+        \tt{alias pretty\_print="cat | nl"}                 \\
+        \tt{find\_txt | pretty\_print}                      \\
+        \quad                                               \\
+        \tt{shopt} has a bunch of other more-or-less useful options.    \\
+        Run \tt{shopt -p} to see all options set or unset.
+\end{frame}
+
+% Page 21 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{select}
+        \tt{\$ select s in a b c d; do}                   \\
+        \quad \tt{echo "Your favourite letter is \$s!"}     \\ 
+        \tt{done}   \\
+        \tt{1) a}   \\
+        \tt{2) b}   \\
+        \tt{3) c}   \\
+        \tt{4) d}   \\
+        \tt{\#? 4}  \\
+        \tt{Your favourite letter is d!}      \\
+        \tt{\#? 2}  \\
+        \tt{Your favourite letter is b!}      \\
+        \tt{\#? x}  \\
+        \tt{Your favourite letter is !}      \\
+        \tt{\#? }   \\
 \end{frame}
 \end{document}
