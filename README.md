@@ -9,7 +9,7 @@ Material for Bash course by me at work
 
 * Session 3: Aliasing, .bashrc, and simple scripts.
 
-* Session 4: More advanced scripting. (_TODO_)
+* Session 4: More advanced scripting.
 
 * Session 5: Even more scripting, and debugging and shellcheck. (_TODO_)
 
