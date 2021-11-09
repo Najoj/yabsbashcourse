@@ -113,7 +113,7 @@
 % Page 9 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Conditions}
         Can be logically combined: \\
-        \tt{ ( [[ \$A -gt \$B ]] || [[ \$C == \$D ]]) \&\& [[ -r \$FILE ]] } \\
+        \tt{([[ \$A -gt \$B ]] || [[ \$C == \$D ]]) \&\& [[ -r \$FILE ]] } \\
         \quad \\
         Can be written directly in the shell:   \\
         \tt{\$ [[ -e \$FILE ]] \&\& rm -v \$FILE} \\
@@ -160,9 +160,9 @@
 % Page 12.5 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Variables}
         Assign variables on single line without spaces. \\
-        \tt{A=20}                                       \\
-        \tt{B="Hello World"}                            \\
-        Derefer variables with \tt{\$}. Use with double quotes.  \\
+        \tt{\$ A=20}                                    \\
+        \tt{\$ B="Hello World"}                         \\
+        Derefer variables with \tt{\$}. Use with double qoutes.  \\
         \tt{\$ echo "\$B"}                              \\
         \tt{Hello World}                                \\
         \tt{\$ echo '\$B'}                              \\
@@ -173,35 +173,46 @@
 \begin{frame}{Variables}
         Simple substitution:                            \\
         \tt{\$ A="Abbas"}                               \\
-        \tt{echo "\$\{A\#Ab\}}                          \\
+        \tt{\$ echo "\$\{A\#Ab\}"}                      \\
         \tt{bas}                                        \\
-        \tt{echo "\$\{A\%as\}}                          \\
+        \tt{\$ echo "\$\{A\%as\}"}                      \\
         \tt{Abb}                                        \\
-        \tt{echo "\$\{A:3\}}                            \\
+        \tt{\$ echo "\$\{A:3\}"}                        \\
         \tt{as}                                         \\
-        \tt{echo "\$\{A:1:4\}}                          \\
+        \tt{\$ echo "\$\{A:1:4\}"}                      \\
         \tt{bbas}                                       \\
-        \tt{echo "\$\{A/b/x}                            \\
+        \tt{\$ echo "\$\{A/b/x\}"}                      \\
         \tt{Axbas}                                      \\
-        \tt{echo "\$\{A//b/x}                           \\
+        \tt{\$ echo "\$\{A//b/x\}"}                     \\
         \tt{Axxas}                                      \\
-        \tt{echo "\$\{PWD\#*/}                          \\
-        \tt{home/user}                                  \\
-        \tt{echo "\$\{PWD\#\#*/}                        \\
-        \tt{user}                                       \\
 \end{frame}
+% Page 12.5.5 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Variables}
+        Simple substitution:                \\
+        \tt{\$ echo "\$\{HOME\}"}           \\
+        \tt{/home/user}                     \\
+        \tt{\$ echo "\$\{HOME\#*/\}"}       \\
+        \tt{home/user/}                     \\
+        \tt{\$ echo "\$\{HOME\#\#*/\}"}     \\
+        \tt{user}                           \\
+        \tt{\$ echo "\$\{HOME\%/*\}"}       \\
+        \tt{as}                             \\
+        \tt{\$ echo "\$\{HOME\%\%/*\}"}     \\
+        \tt{}                               \\
+\end{frame}
+
 % Page 13 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Array}
         \tt{\#!/bin/bash}                       \\
         \tt{ARRAY=(a b c 1 2 3)}                \\
-        \tt{for e in \$\{ARRAY[*]\}; do}        \\
+        \tt{for e in \$\{ARRAY[*]\}; do}     \\
         \quad \tt{echo \$e}                     \\
-        done                                    \\
-        echo "\$\{ARRAY[0]\}"                   \\
-        echo "\$\{ARRAY[20]\}"                  \\
-        echo "\$\{ARRAY[-1]\}"                  \\
-        B=\$\{A[@]\}                            \\
-        echo "\$B"
+        \tt{done}                               \\
+        \tt{echo "\$\{ARRAY[0]\}"}              \\
+        \tt{echo "\$\{ARRAY[20]\}"}             \\
+        \tt{echo "\$\{ARRAY[-1]\}"}             \\
+        \tt{B=\$\{ARRAY[@]\}}                   \\
+        \tt{echo "\$B"}
 \end{frame}
 
 
