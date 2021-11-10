@@ -29,6 +29,19 @@
     \bf{Note:} The notes will tell you which file to try, but you are free to use whichever you want. Therefore, only \tt{script.bash} will be used for the examples.
 \end{frame}
 
+% Page 1.75 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Debugging}
+    Print every line executed:      \\
+    \tt{\$ bash -x script.bash}     \\
+    or, set \tt{-x} argument in script head \\
+    \tt{\#!/bin/bash -x}            \\
+    or, set with \tt{set} command inside script \\
+    \tt{\#!/bin/bash}               \\
+    \tt{set -x  \# Note the minus sign} \\
+    \tt{\# ...}                         \\
+    \tt{set +x  \# Note the plus sign}  \\
+\end{frame}
+
 % Page 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Debugging}
     Print every line executed:      \\
@@ -74,7 +87,7 @@
     The execution steps are written to stderr. \tt{2>\&1} will redirect stderr to stdout. \tt{less} will only read streams from stdin and only data from stout will be directed to stdin.
 \end{frame}
 
-% Page 4 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Page 5 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Debugging}
     Using debug variable \tt{DEBUG}.    \\
     \tt{\$ DEBUG bash script.bash}      \\
@@ -86,16 +99,53 @@
     \bf{Note:} If parameter \tt{DEBUG} is null or unset, nothing is substituted, otherwise the expansion of word is substituted.   \\
 \end{frame}
 
-% Page 4 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Page 6 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Debugging}
-    Using debug variable \tt{DEBUG}.    \\
-    \tt{\$ DEBUG bash script.bash}      \\
-    \quad   \\
-    \tt{\#!/bin/bash}                   \\
-    \tt{if \$\{DEBUG+x\}; then}         \\
-    \quad \tt{\# Set debug options an variables}  \\
-    \tt{fi}                             \\
-    \bf{Note:} If parameter \tt{DEBUG} is null or unset, nothing is substituted, otherwise the expansion of word is substituted.   \\
+    Error printing function:                       \\
+    \tt{function err \{ }                          \\
+    \quad \tt{ [ "\$\{DEBUG+x\}" ] \&\& echo "\$@"}  \\
+    \tt{\}}
 \end{frame}
 
+% Page 7 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Shellcheck}
+    \url{https://www.shellcheck.net/}               \\
+    \quad       \\
+    ShellCheck is a GPLv3 tool that gives warnings and suggestions for bash/sh shell scripts.   \\
+    Can be installed or run through their website.      \\
+    \quad   \\
+    (Written in Haskell.)
+\end{frame}
+
+% Page 8 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Shellcheck}
+    Correct \tt{script1.bash} \& \tt{script2.bash} on Shellcheck. Have look at their explanations.
+\end{frame}
+
+% Page 9 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Shellcheck}
+    Errors in Shellcheck can be ignored by comment before error line:    \\
+    \tt{\# shellcheck disable=SC2059}
+\end{frame}
+
+% Page 10 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Line-by-line execution}
+    One way of forcing line-by-line execution of scripts is to use \tt{trap}:   \\
+    \tt{\#!/bin/bash}       \\
+    \tt{trap read debug}    \\
+    \tt{whoami}             \\
+    \tt{ls}                 \\
+    \tt{for i in \{1..5\}; do echo "\$i"; done}                  \\
+    \quad   \\
+    Followed by your code. Press return to execute next line.   \\
+    Try to run with \tt{-x} and \tt{-v} flag.
+\end{frame}
+
+% Page 11 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Various IDE plugins}
+    You can search for plugins for your IDE. There will probably be some tool to help you.   \\
+    \quad   \\
+    There is a tool you can install to use \tt{--debug} flag for Bash called bashdb:    \\
+    \url{http://bashdb.sourceforge.net/}
+\end{frame}
 \end{document}
