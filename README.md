@@ -11,5 +11,4 @@ Material for Bash course by me at work
 
 * Session 4: More advanced scripting.
 
-* Session 5: Debugging and shellcheck. (_TODO_)
-
+* Session 5: Debugging and shellcheck.
