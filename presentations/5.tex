@@ -31,15 +31,7 @@
 
 % Page 1.75 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Debugging}
-    Print every line executed:      \\
-    \tt{\$ bash -x script.bash}     \\
-    or, set \tt{-x} argument in script head \\
-    \tt{\#!/bin/bash -x}            \\
-    or, set with \tt{set} command inside script \\
-    \tt{\#!/bin/bash}               \\
-    \tt{set -x  \# Note the minus sign} \\
-    \tt{\# ...}                         \\
-    \tt{set +x  \# Note the plus sign}  \\
+    Check syntax without running with \tt{-n}.
 \end{frame}
 
 % Page 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -90,12 +82,12 @@
 % Page 5 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Debugging}
     Using debug variable \tt{DEBUG}.    \\
-    \tt{\$ DEBUG bash script.bash}      \\
+    \tt{\$ DEBUG= bash script.bash}      \\
     \quad   \\
     \tt{\#!/bin/bash}                   \\
-    \tt{if \$\{DEBUG+x\}; then}         \\
-    \quad \tt{\# Set debug options an variables}  \\
-    \tt{fi}                             \\
+    \tt{if \[ \$\{DEBUG+x\}; then \] }              \\
+    \quad \tt{\# Set debug options an variables}    \\
+    \tt{fi}                                         \\
     \bf{Note:} If parameter \tt{DEBUG} is null or unset, nothing is substituted, otherwise the expansion of word is substituted.   \\
 \end{frame}
 
@@ -111,7 +103,7 @@
 \begin{frame}{Shellcheck}
     \url{https://www.shellcheck.net/}               \\
     \quad       \\
-    ShellCheck is a GPLv3 tool that gives warnings and suggestions for bash/sh shell scripts.   \\
+    Shellcheck is a GPLv3 tool that gives warnings and suggestions for bash/sh shell scripts.   \\
     Can be installed or run through their website.      \\
     \quad   \\
     (Written in Haskell.)
