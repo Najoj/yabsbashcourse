@@ -1,8 +1,8 @@
-# Suggestied solutions for day 5 exercises
+# Suggested solutions for day 5 exercises
 
 Run `shellcheck` either online on installed on you computer: [Shellcheck.com](https://shellcheck.com/)
 
-_Note that this scripts are not very useful. Just ful of issues._
+_Note that this scripts are not very useful. Just full of issues._
 
 ## script1.bash
 
@@ -87,7 +87,7 @@ Have a look at the links `shellchick` provides.
 
 * Add `-r` before read
 * Use `$(echo 2+2 | bc)` notion instead of ``` `echo 2+2 | bc` ```.
-* Use `((++A))` insead of using `let ++$A`.
+* Use `((++A))` instead of using `let ++$A`.
 
 ## script2.bash
 
@@ -157,7 +157,7 @@ For more information:
 
 There happen to be an extra space after `eof`. Remove it.
 
-The while loop at the end looks incomplete, as do the switch-case. Did you not finnish the script? Complete or remove those lines.
+The while loop at the end looks incomplete, as do the switch-case. Did you not finish the script? Complete or remove those lines.
 
 ```
 
@@ -260,7 +260,7 @@ For more information:
 
 ```
 
-Now you will a ha lot of fairly easy isseus to correct, all but the function.
+Now you will a ha lot of fairly easy issues to correct, all but the function.
 
 Now you should see this as you run `shellcheck`:
 
