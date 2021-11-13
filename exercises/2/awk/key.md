@@ -5,7 +5,7 @@ Print the first word of each row in the file.
 
 Count number of lines in `playlist.txt`. Does it differ from `wc`? Are there more ways to do the same?
 
-* `awk END{print NR} < playlist.txt'
+* `awk END{print NR} < playlist.txt`
 * `wc -l playlist.txt`
 
 Only print the lines with artist having `The` to start with.
