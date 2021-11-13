@@ -1,6 +1,6 @@
-Try to figure these out by doing them one step at the time. If you get stuck, move to the next point.
+Try to figure these out by doing them one step at the time. If you get stuck, move to the next step.
 
-Unless stated, you are assumed to use `awk`, but feel free to try combining other commandns.
+Unless stated, you are assumed to use `awk`, but feel free to try combining other commands.
 
 You can choose to use `awk arguments file`, `cat file | awk arguments`, or `awk arguments < file`.
 
@@ -12,7 +12,7 @@ Use the same file as the exercises for `grep`.
 
 * Count number of lines in `playlist.txt`. Does it differ from `wc`? Are there more ways to do the same?
 
-* Count the number of occuraces of some artist which in the file?
+* Count the number of occurrences of some artist which in the file?
 
 * Only print the lines with artist having `The` to start with. _Tip:_ To match starting line in regular expression use ^.
 
