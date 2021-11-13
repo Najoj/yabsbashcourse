@@ -10,7 +10,7 @@ Count number of lines in `playlist.txt`. Does it differ from `wc`? Are there mor
 
 Only print the lines with artist having `The` to start with.
 
-* `awk '/^The/` < playlist.txt
+* `awk '/^The/' < playlist.txt`
 
 How many lines are there matching with starting `The`?
 
