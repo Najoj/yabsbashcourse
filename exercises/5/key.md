@@ -322,7 +322,7 @@ if which find; then
         find "${HOME}" -exec grep 'hello' {} + -type f -iname "*.txt" -maxdepth 1
 fi
 
-if [ -z "$*" ] & [[ 2 -lt "3" ]]; then
+if [ -z "$*" ] && [[ 2 -lt "3" ]]; then
         for _ in "$@"; do echo hello; done | sed sfhellofgoodbye\\nf
         for f in *.txt; do echo cat "$f"; done | shuf
 fi
