@@ -1,6 +1,6 @@
 Try to figure these out by doing them one step at the time. If you get stuck, move to the next point.
 
-Unless stated, you are assumed to use `grep`, but feel free to try combining other commandns.
+Unless stated, you are assumed to use `grep`, but feel free to try combining other commands.
 
 You can choose to use `grep arguments file`, `cat file | grep arguments`, or `grep arguments < file`.
 
@@ -21,8 +21,6 @@ Format of `playlist.txt` is `artist - songtitle (length)` where the `length` is 
 * Can you find all songs which are shorter than 1:00?
 
 * Print only the songs which contain the the word `Cop`, i. e. not in artist's name, and exactly this word.
-
-* * Can you print only the song songs which contain the the word `Cop`, i. e. not in artist's name, and exactly this word.
 
 * How would you go about finding the artist `$wingin' Utter$` in the playlist? Think of it as a general script to find artist `A`. By default, `grep` will try to do regex match by default.
 
