@@ -20,7 +20,7 @@ Print only the songs which contain the the word `Cop`, i. e. not in artist's nam
 
 How would you go about finding the artist `$wingin' Utter$` in the playlist? Think of it as a general script to find artist `A`. By default, `grep` will try to do regex match by default.
 
-* A="\$wingin' Utter$"; grep -F "$A" playlist.txt
+* `A="\$wingin' Utter$"; grep -F "$A" playlist.txt`
 
 From the `man` page of `grep`:
 ```
